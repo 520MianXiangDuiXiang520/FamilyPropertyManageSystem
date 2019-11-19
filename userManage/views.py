@@ -49,13 +49,11 @@ class RegisterView(APIView):
             password = request.POST.get('password')
             pwdagain = request.POST.get('pwdagain')
         except:
-            ret = CODE[400]
-            return JsonResponse(ret)
+            return JsonResponse(CODE[400])
         try:
             user_in_db = User.objects.filter(username=username)
         except:
-            ret = CODE[500]
-            return JsonResponse(ret)
+            return JsonResponse(CODE[500])
         if user_in_db:
             ret = CODE[400]
             ret['msg'] = "用户名重复"
@@ -163,7 +161,7 @@ class AboutFamilyView(APIView):
         for parent in [family_mumber.parent1, family_mumber.parent2]:
             if parent is not None:
                 self._send_message(request.user, family_mumber.parent1, "加入家庭请求",
-                                   f"{request.user.username} 请求加入您的家庭， 是否同意？", 2)
+                                   f"{request.user.username} (id = {request.user.id}) 请求加入您的家庭， 是否同意？", 2)
                 new_application = Application(applicant=request.user,
                                               interviewer=family_mumber.parent1)
                 new_application.save()
@@ -189,10 +187,15 @@ class AboutFamilyView(APIView):
         family = Family.objects.filter(id=family_id).first()
         if not family:
             return JsonResponse(CODE[400])
-        self_applicant_num = Application.objects.aggregate(count=Count('applicant'))['count']
-        if self_applicant_num >= 2:
-            ret = CODE[429]
-            ret['msg'] = "只能搞两次"
+        # self_applicant_num = Application.objects.aggregate(count=Count('applicant'))['count']
+        # if self_applicant_num >= 2:
+        #     ret = CODE[429]
+        #     ret['msg'] = "只能搞两次"
+        #     return JsonResponse(ret)
+        # 限制一个用户只能加入一个家庭
+        if request.user.family1:
+            ret = CODE[460]
+            ret['msg'] = "只能加入一个家庭"
             return JsonResponse(ret)
         family_mumber = family.family_member
         self._people_reached_upper_limit_judge(family_mumber)

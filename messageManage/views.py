@@ -28,8 +28,10 @@ class MessageView(APIView):
             if self._delete_overtime_message(i) and i['state'] == 2:
                 field = Message.objects.get(i['id'])
                 field.delete()
-            i['send_id'] = User.objects.get(id=i['send_id']).username
-            i['receive_id'] = User.objects.get(id=i['receive_id']).username
+            i['send_id'] = User.objects.get(id=i['send_id']).id
+            i['send_name'] = User.objects.get(id=i['send_id']).username
+            i['receive_id'] = User.objects.get(id=i['receive_id']).id
+            i['receive_name'] = User.objects.get(id=i['receive_id']).username
             message_list.append(i)
         return JsonResponse(message_list, safe=False)
 
@@ -38,7 +40,6 @@ class MessageView(APIView):
         # 删除消息
         DELETE = QueryDict(request.body)
         message_id = DELETE.get('id')
-        print(message_id)
         try:
             prepare_delete_mes = Message.objects.get(id=message_id)
         except:

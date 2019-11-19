@@ -13,18 +13,18 @@ class FamilyManageView(APIView):
     def post(request, *args, **kwargs):
         # create new family
         family_name = request.POST.get('family_name')
-        # 判断该用户能不能创建家庭（每个人只能加入两个家庭）
-        if request.user.family1 and request.user.family2:
+        # 判断该用户能不能创建家庭（每个人只能加入一个家庭）
+        if request.user.family1:
             return JsonResponse(CODE[460])
         try:
             family_from_db = Family.objects.filter(
                 family_name=family_name)
         except:
             return JsonResponse(CODE[500])
-        if family_from_db:
-            msg = CODE[400]
-            msg['msg'] = "家庭名重复"
-            return JsonResponse(msg)
+        # if family_from_db:
+        #     msg = CODE[400]
+        #     msg['msg'] = "家庭名重复"
+        #     return JsonResponse(msg)
         try:
             parent1 = User.objects.get(id=request.user.id)
             new_family_member = FamilyMembers(parent1=parent1)
@@ -41,8 +41,29 @@ class FamilyManageView(APIView):
     # 查看家庭信息
     @staticmethod
     def get(request, *args, **kwargs):
-        # delete family
-        return JsonResponse("pass", safe=False)
+        family_info = {}
+        family = request.user.family1
+        if family:
+            family_info['id'] = family.id
+            family_info['name'] = family.family_name
+            mumber = []
+            fmumber = family.family_member
+            for i in fmumber._meta.fields:
+                m_user_data = {}
+                m_user = getattr(fmumber, i.name)
+                print(f'm_user============{m_user}')
+                if m_user and isinstance(m_user, User):
+                    m_user_data['id'] = m_user.id
+                    m_user_data['name'] = m_user.username
+                    mumber.append(m_user_data)
+            family_info['mumber'] = mumber
+
+        if not family_info:
+            family_info['family_info'] = 'null'
+        ret = CODE[200]
+        print(family_info)
+        ret['data'] = family_info
+        return JsonResponse(ret, safe=False)
 
 
 class MemberManageView(APIView):
@@ -98,15 +119,26 @@ class MemberManageView(APIView):
             return JsonResponse(CODE[418])
         for m in member_list:
             m_value = getattr(fm, m)
+            # 将家庭加入到成员家庭项目中
+            if child.family1:
+                ret = CODE[460]
+                ret['msg'] = "只能加入一个家庭"
+                return JsonResponse(ret)
+            # 将新成员加入到家庭成员表中
+            # TODO：判断新成员是不是在家庭中了
             if m_value is None:
                 setattr(fm, m, child)
                 fm.save()
+
+                child.family1 = the_family
+                child.save()
                 new_message = Message(send=request.user,
                                       receive=child,
                                       title="加入成功！",
                                       text=f"{request.user.username} 同意你加入家庭 "
                                            f"{the_family.family_name}.")
                 new_message.save()
+                get_application.delete()
                 return JsonResponse(CODE[200])
 
 

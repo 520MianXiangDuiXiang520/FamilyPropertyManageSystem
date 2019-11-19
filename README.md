@@ -1,15 +1,53 @@
 # FamilyPropertyManageSystem
 
+家庭财产管理系统  
+
+要求功能：
+
+|  |  |
+|---|--|
+||（1）用户登录模块|  
+||（2）收支管理|
+||（3）银行储蓄管理|
+||（4）借还钱管理|
+||（5） 生成资产报告|
+
+
 ## 接口文档
 
 所有需要认证的接口必须通过GET方式传递表示唯一身份认证的`token`字段，该字段由首次注册或登录时返回，`token`在服务器保存并校验，用户15分钟无动作
-`token`会被自动删除
+`token`会被自动删除 认证失败将会返回
+
+```json
+{
+	"detail": "认证失败(no token)"
+}
+```
+
+响应状态码：
+
+[标准浏览器状态码](#https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status)  
+
+```py
+CODE = {
+    200: {'code': 200, 'msg': "ok"},
+    400: {'code': 400, 'msg': "Bad Request"},  # 请求错误
+    401: {'code': 401, 'msg': "Unauthorized"},  # 没有用户凭证
+    403: {'code': 403, 'msg': 'Forbidden'},  # 拒绝授权
+    418: {'code': 418, 'msg': 'happy new year'},
+    429: {'code': 429, 'msg': "Too many request"},
+    460: {'code': 460, 'msg': 'Reach the upper limit'},  # 自定义，达到上限
+    500: {'code': 500, 'msg': "Internal Server Error"}  # 服务器异常
+}
+```
 
 ### 注册
 
-URL ：http://127.0.0.1:8000/api/v1/user_manage/register/  
-method: POST  
-认证：无需认证  
+|URL|http://127.0.0.1:8000/api/v1/user_manage/register/  |
+|-|-|
+|method| POST|  
+|认证|无需认证|
+
 请求数据格式：  
 
 ```json
@@ -221,4 +259,134 @@ STATE = [(0, '未读'), (1, '星标'), (2, '已读')]
 	"state": "2"
 }
 ```
+
+### 家庭管理
+
+每个用户只能对应一个家庭，可以没有家庭，一个家庭最多8位成员（包括两位家长）
+
+#### 创建家庭
+
+|URL|127.0.0.1:8000/api/v1/family/familyManage/|
+|---|--|
+|method|POST|
+|认证|需要认证|
+|权限|无|
+
+请求格式：
+
+```json
+{
+	"family_name": "newfamily"
+}
+```
+
+成功响应：`200,ok`  
+
+失败响应：
+
+如果用户已经有对应的家庭了
+
+```json
+{
+	"code": 460,
+	"msg": "Reach the upper limit"
+}
+```
+
+请求数据错误可能返回400，服务器内部错误可能返回500
+
+
+#### 查看家庭信息
+
+|URL|127.0.0.1:8000/api/v1/family/familyManage/|
+|---|---|
+|method|GET|
+|认证|需要认证|
+|权限|无|
+
+
+成功返回示例：
+
+```json
+{
+	"code": 200,
+	"msg": "ok",
+	"token": "8832f186-4c38-4cb9-ae7d-3aa375b7ee42",
+	"data": {
+		"id": 2,
+		"name": "newfamily",
+		"mumber": [
+			{
+				"id": 3,
+				"name": "家长"
+			},
+			{
+				"id": 6,
+				"name": "用户3"
+			},
+			{
+				"id": 5,
+				"name": "用户2"
+			}
+		]
+	}
+}
+```
+
+错误返回：
+
+如果用户已经加入过家庭，将会返回**460**  
+如果申请表中不存在该用户申请的记录，返回**418**
+
+#### 用户申请加入家庭
+
+>在用户管理（userManage）app 下
+
+|URL|http://127.0.0.1:8000/api/v1/user_manage/about_family/|
+|---|--|
+|method|POST|
+|认证|需要认证|
+|权限|无|
+
+请求格式：
+
+```json
+{
+	"family_id": "1"
+}
+```
+
+响应
+
+成功响应**200**
+如果已经加入了家庭，响应**460**  
+请求数据错误响应**400**
+
+
+#### 家长审核用户加入家庭的请求
+
+|URL|http://127.0.0.1:8000/api/v1/family/familyMember/|
+|---|--|
+|method|PUT|
+|认证|需要认证|
+|权限|家长权限|
+
+请求格式
+
+```json
+{
+	"family_id": "2",
+	"child_id": "5",
+	"request_time": "111",
+	"is_agree": "0"
+}
+```
+
+`is_agree` 0代表同意， 1代表不同意
+
+#### 用户退出家庭
+
+TODO：
+
+#### 家长位置转让
 

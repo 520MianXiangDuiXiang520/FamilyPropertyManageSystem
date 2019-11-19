@@ -14,8 +14,8 @@ class User(models.Model):
     sex = models.SmallIntegerField(choices=SEX, default=1, db_column="性别")
     family1 = models.ForeignKey(to=Family, on_delete=models.SET_NULL,
                                 null=True, blank=True, related_name="family1", db_column="家庭1")
-    family2 = models.ForeignKey(to=Family, on_delete=models.SET_NULL,
-                                null=True, blank=True, related_name="family2", db_column="家庭2")
+    # family2 = models.ForeignKey(to=Family, on_delete=models.SET_NULL,
+    #                             null=True, blank=True, related_name="family2", db_column="家庭2")
 
     class Meta:
         db_table = '用户表'
