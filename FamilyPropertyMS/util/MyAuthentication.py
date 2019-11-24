@@ -10,7 +10,6 @@ class MyAuthentication(BaseAuthentication):
     def _timeout_judgment(token_field):
         delta = (datetime.datetime.now(tz=pytz.timezone('UTC')).replace(tzinfo=pytz.timezone('UTC'))
                  - token_field.create_time.replace(tzinfo=pytz.timezone('UTC')))
-        print(delta)
         return delta.seconds < 60 * 15
 
     @staticmethod

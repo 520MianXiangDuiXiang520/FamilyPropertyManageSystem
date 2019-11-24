@@ -7,6 +7,7 @@ from rest_framework.views import APIView
 import uuid
 from .models import User, UserToken
 from FamilyPropertyMS.util.ResponseCode import CODE
+from FamilyPropertyMS.util.Tool import timeout_judgment
 from familyManage.models import Family, Application
 from messageManage.models import Message
 
@@ -192,11 +193,13 @@ class AboutFamilyView(APIView):
         family = Family.objects.filter(id=family_id).first()
         if not family:
             return JsonResponse(CODE[400])
-        # self_applicant_num = Application.objects.aggregate(count=Count('applicant'))['count']
-        # if self_applicant_num >= 2:
-        #     ret = CODE[429]
-        #     ret['msg'] = "只能搞两次"
-        #     return JsonResponse(ret)
+        self_applicant = Application.objects.filter(applicant=request.user).first()
+        if self_applicant:
+            # 如果用户发起过请求
+            if not timeout_judgment(self_applicant, 'start_time', '1/d'):
+                ret = copy(CODE[460])
+                ret['msg'] = '你已经申请过了，明天再来！！'
+                return JsonResponse(ret, safe=False)
         # 限制一个用户只能加入一个家庭
         if request.user.family1:
             ret = copy(CODE[460])
