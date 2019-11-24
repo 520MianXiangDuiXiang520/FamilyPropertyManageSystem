@@ -16,6 +16,17 @@ class User(models.Model):
                                 null=True, blank=True, related_name="family1", db_column="家庭1")
     # family2 = models.ForeignKey(to=Family, on_delete=models.SET_NULL,
     #                             null=True, blank=True, related_name="family2", db_column="家庭2")
+    
+    def toString(self):
+        result = {'id': self.id,
+                  'username': self.username,
+                  'telephone': self.telephone,
+                  'email': self.email,
+                  'sex': self.email,
+                  }
+        if self.family1:
+            result['family1'] = self.family1.toString()
+        return result
 
     class Meta:
         db_table = '用户表'

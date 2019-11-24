@@ -28,7 +28,9 @@ class LoginView(APIView):
             password = request.POST.get('password')
             user = User.objects.filter(username=username, password=password).first()
             if not user:
-                return JsonResponse(CODE[400])
+                ret = CODE[400]
+                ret['msg'] = '用户不存在'
+                return JsonResponse(ret)
             u4 = uuid.uuid4()  # 生成uuid4
             UserToken.objects.update_or_create(user=user, defaults={'token': u4})
             ret['token'] = u4
@@ -97,10 +99,7 @@ class UserInfoView(APIView):
         :param request: Request
         :return: dict
         """
-        info = {}
-        for matter in UserInfoView.user_info_matters:
-            info[matter] = getattr(request.user, matter)
-        return info
+        return request.user.toString()
 
     def get(self, request, *args, **kwargs):
         """
@@ -110,6 +109,7 @@ class UserInfoView(APIView):
         """
         try:
             info = self.get_user_info(request, *args, **kwargs)
+            print(info)
         except AttributeError:
             return JsonResponse(CODE[500])
         return JsonResponse(info, safe=False)
@@ -124,12 +124,15 @@ class UserInfoView(APIView):
         data = PUT.dict()
         for field in data:
             if field in UserInfoView.user_info_matters:
-                try:
-                    setattr(request.user, field, data[field])
-                    request.user.save()
-                except:
-                    return JsonResponse(CODE[500])
-        return JsonResponse(self.get_user_info(request), safe=False)
+                if len(data[field]) != 0:
+                    try:
+                        setattr(request.user, field, data[field])
+                        request.user.save()
+                    except:
+                        return JsonResponse(CODE[500])
+        ret = self.get_user_info(request)
+        ret.update(CODE[200])
+        return JsonResponse(ret, safe=False)
 
 
 class AboutFamilyView(APIView):

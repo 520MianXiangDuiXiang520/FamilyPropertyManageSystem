@@ -159,14 +159,20 @@ method：GET
 
 ```json
 {
-	"id": 1,
-	"username": "junbao",
-	"password": "222",
-	"telephone": "15364968962",
-	"email": "15364968962@163.com",
-	"sex": 1,
-	"family1": null,
-	"family2": null
+	"id": 3,
+	"username": "家长",
+	"telephone": "",
+	"email": "jiazhang@163.com",
+	"sex": "jiazhang@163.com",
+	"family1": {
+		"id": 2,
+		"family_name": "newfamily",
+		"family_member": {
+			"parent1": "家长",
+			"members3": "用户3",
+			"members4": "用户2"
+		}
+	}
 }
 ```
 
@@ -186,9 +192,20 @@ method: PUT
 
 ```json
 {
-	"username": "junbao",
-	"telephone": "15364968962",
-	"email": "15364968962@163.com"
+	"id": 3,
+	"username": "家长",
+	"telephone": "",
+	"email": "jiazhang@163.com",
+	"sex": "jiazhang@163.com",
+	"family1": {
+		"id": 2,
+		"family_name": "newfamily",
+		"family_member": {
+			"parent1": "家长",
+			"members3": "用户3",
+			"members4": "用户2"
+		}
+	}
 }
 ```
 

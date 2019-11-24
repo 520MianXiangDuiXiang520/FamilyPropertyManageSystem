@@ -12,6 +12,13 @@ class Family(models.Model):
     class Meta:
         db_table = '家庭表'
 
+    def toString(self):
+        return {
+         'id': self.id,
+         'family_name': self.family_name,
+         'family_member': self.family_member.toString()
+        }
+
 
 class FamilyMembers(models.Model):
     id = models.BigAutoField(primary_key=True)
@@ -33,6 +40,14 @@ class FamilyMembers(models.Model):
 
     class Meta:
         db_table = '家庭成员表'
+
+    def toString(self):
+        result = {}
+        attr_list = ['parent1', 'parent2', 'members3', 'members4', 'members5', 'members6', 'members7', 'members8']
+        for i in attr_list:
+            if getattr(self, i):
+                result[i] = getattr(self, i).username
+        return result
 
 
 class Application(models.Model):

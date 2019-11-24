@@ -14,6 +14,8 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path, include
+from django.views.generic import TemplateView
+
 from userManage import urls as user_manage_urls
 from messageManage import urls as message_url
 from familyManage import urls as family_manage_url
@@ -21,5 +23,6 @@ from familyManage import urls as family_manage_url
 urlpatterns = [
     path('api/v1/user_manage/', include(user_manage_urls)),
     path('api/v1/message/', include(message_url)),
-    path('api/v1/family/', include(family_manage_url))
+    path('api/v1/family/', include(family_manage_url)),
+    path(r'', TemplateView.as_view(template_name="page/index.html")),
 ]

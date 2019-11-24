@@ -20,8 +20,7 @@ class MessageView(APIView):
         print(delta.seconds)
         return delta.seconds > 60 * 60 * 24
 
-    def get(self, request, *args, **kwargs):
-        # 获得消息列表
+    def _get_message(self, request):
         messages = Message.objects.filter(receive__id=request.user.id)
         message_list = []
         for i in messages.values():
@@ -33,10 +32,13 @@ class MessageView(APIView):
             i['receive_id'] = User.objects.get(id=i['receive_id']).id
             i['receive_name'] = User.objects.get(id=i['receive_id']).username
             message_list.append(i)
-        return JsonResponse(message_list, safe=False)
+        return message_list
 
-    @staticmethod
-    def delete(request, *args, **kwargs):
+    def get(self, request, *args, **kwargs):
+        # 获得消息列表
+        return JsonResponse(self._get_message(request), safe=False)
+
+    def delete(self, request, *args, **kwargs):
         # 删除消息
         DELETE = QueryDict(request.body)
         message_id = DELETE.get('id')
@@ -48,10 +50,9 @@ class MessageView(APIView):
         if request.user.id != prepare_delete_mes.receive_id:
             return JsonResponse(CODE[403])
         prepare_delete_mes.delete()
-        return JsonResponse(CODE[200], safe=False)
+        return JsonResponse(self._get_message(request), safe=False)
 
-    @staticmethod
-    def post(request, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
         # 发送消息
         receive = request.POST.get('receive')
         title = request.POST.get('title')
@@ -65,10 +66,9 @@ class MessageView(APIView):
             new_message.save()
         except Exception:
             return JsonResponse(CODE[500])
-        return JsonResponse(CODE[200], safe=False)
+        return JsonResponse(self._get_message(request), safe=False)
 
-    @staticmethod
-    def put(request, *args, **kwargs):
+    def put(self, request, *args, **kwargs):
         # 修改消息状态为已读或者星标
         PUT = QueryDict(request.body)
         message_id = PUT.get('id')
@@ -77,12 +77,12 @@ class MessageView(APIView):
             message = Message.objects.get(id=message_id)
         except:
             return JsonResponse(CODE[400])
-        if message_state not in (1, 2):
+        if message_state not in (0, 1, 2, 3):
             return JsonResponse(CODE[403])
         try:
             message.state = message_state
             message.save()
         except:
             return JsonResponse(CODE[500])
-        return JsonResponse(CODE[200])
+        return JsonResponse(self._get_message(request), safe=False)
 
