@@ -324,28 +324,29 @@ STATE = [(0, '未读'), (1, '星标'), (2, '已读')]
 
 成功返回示例：
 
+如果用户并没有加入家庭
+
 ```json
 {
 	"code": 200,
 	"msg": "ok",
-	"token": "8832f186-4c38-4cb9-ae7d-3aa375b7ee42",
-	"data": {
-		"id": 2,
-		"name": "newfamily",
-		"mumber": [
-			{
-				"id": 3,
-				"name": "家长"
-			},
-			{
-				"id": 6,
-				"name": "用户3"
-			},
-			{
-				"id": 5,
-				"name": "用户2"
-			}
-		]
+	"family": "null"
+}
+```
+
+如果用户加入了家庭
+
+```json
+{
+	"code": 200,
+	"msg": "ok",
+	"token": "949a6236-c8a3-4fdd-8ea8-2ac24b77776d",
+	"id": 2,
+	"family_name": "newfamily",
+	"family_member": {
+		"parent1": "家长",
+		"members3": "用户3",
+		"members4": "用户2"
 	}
 }
 ```
