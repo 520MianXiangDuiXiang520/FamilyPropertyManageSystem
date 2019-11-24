@@ -1,3 +1,5 @@
+from copy import copy
+
 from django.db.models import Count
 from django.shortcuts import HttpResponse
 from django.http import JsonResponse, QueryDict
@@ -28,7 +30,7 @@ class LoginView(APIView):
             password = request.POST.get('password')
             user = User.objects.filter(username=username, password=password).first()
             if not user:
-                ret = CODE[400]
+                ret = copy(CODE[400])
                 ret['msg'] = '用户不存在'
                 return JsonResponse(ret)
             u4 = uuid.uuid4()  # 生成uuid4
@@ -57,18 +59,18 @@ class RegisterView(APIView):
         except:
             return JsonResponse(CODE[500])
         if user_in_db:
-            ret = CODE[400]
+            ret = copy(CODE[400])
             ret['msg'] = "用户名重复"
             return JsonResponse(ret)
         if password != pwdagain:
-            ret = CODE[400]
+            ret = copy(CODE[400])
             ret['msg'] = "两次密码不一致"
             return JsonResponse(ret)
         new_user = User.objects.create(username=username, password=password)
         new_user.save()
         u4 = uuid.uuid4()  # 生成uuid4
         UserToken.objects.update_or_create(user=new_user, defaults={'token': u4})
-        ret = CODE[200]
+        ret = copy(CODE[200])
         ret['token'] = u4
         return JsonResponse(ret)
 
@@ -83,7 +85,7 @@ class LogoutView(APIView):
             UserToken.objects.get(token=token).delete()
             return JsonResponse(CODE[200])
         except:
-            ret = CODE[400]
+            ret = copy(CODE[400])
             ret['msg'] = "登出失败"
             return JsonResponse(ret)
 
@@ -197,7 +199,7 @@ class AboutFamilyView(APIView):
         #     return JsonResponse(ret)
         # 限制一个用户只能加入一个家庭
         if request.user.family1:
-            ret = CODE[460]
+            ret = copy(CODE[460])
             ret['msg'] = "只能加入一个家庭"
             return JsonResponse(ret)
         family_mumber = family.family_member

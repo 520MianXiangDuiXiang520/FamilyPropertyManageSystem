@@ -1,3 +1,5 @@
+from copy import copy
+
 from django.http import JsonResponse, QueryDict
 from rest_framework.views import APIView
 from messageManage.models import Message
@@ -41,28 +43,14 @@ class FamilyManageView(APIView):
     # 查看家庭信息
     @staticmethod
     def get(request, *args, **kwargs):
+
         family_info = {}
         family = request.user.family1
         if family:
-            family_info['id'] = family.id
-            family_info['name'] = family.family_name
-            mumber = []
-            fmumber = family.family_member
-            for i in fmumber._meta.fields:
-                m_user_data = {}
-                m_user = getattr(fmumber, i.name)
-                print(f'm_user============{m_user}')
-                if m_user and isinstance(m_user, User):
-                    m_user_data['id'] = m_user.id
-                    m_user_data['name'] = m_user.username
-                    mumber.append(m_user_data)
-            family_info['mumber'] = mumber
-
-        if not family_info:
-            family_info['family_info'] = 'null'
-        ret = CODE[200]
+            family_info = family.toString()
+        ret = copy(CODE[200])
         print(family_info)
-        ret['data'] = family_info
+        ret.update(family_info)
         return JsonResponse(ret, safe=False)
 
 
@@ -121,7 +109,7 @@ class MemberManageView(APIView):
             m_value = getattr(fm, m)
             # 将家庭加入到成员家庭项目中
             if child.family1:
-                ret = CODE[460]
+                ret = copy(CODE[460])
                 ret['msg'] = "只能加入一个家庭"
                 return JsonResponse(ret)
             # 将新成员加入到家庭成员表中
