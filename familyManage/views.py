@@ -44,7 +44,7 @@ class FamilyManageView(APIView):
     @staticmethod
     def get(request, *args, **kwargs):
 
-        family_info = {}
+        family_info = {'family': 'null'}
         family = request.user.family1
         if family:
             family_info = family.toString()
