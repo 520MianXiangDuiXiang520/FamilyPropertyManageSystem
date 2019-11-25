@@ -97,7 +97,7 @@ class MemberManageView(APIView):
         the_family = User.objects.get(id=int(put_data.get('parent_id'))).family1
         if put_data.get('is_agree') == '1':
             send_message(request.user, child, "申请失败",
-                         "{request.user.username} 不同意你加入家庭{the_family.family_name}.", 1)
+                         f"{request.user.username} 不同意你加入家庭{the_family.family_name}.", 1)
             return JsonResponse(response_detail(200))
         get_application = Application.objects.filter(applicant=child,
                                                      interviewer=request.user).first()

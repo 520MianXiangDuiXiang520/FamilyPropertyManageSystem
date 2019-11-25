@@ -24,7 +24,7 @@ class MessageView(APIView):
 
     def get(self, request, *args, **kwargs):
         # 获得消息列表
-        return JsonResponse(response_detail(200).update(self._get_message(request)), safe=False)
+        return JsonResponse(self._get_message(request), safe=False)
 
     def delete(self, request, *args, **kwargs):
         # 删除消息
@@ -38,8 +38,7 @@ class MessageView(APIView):
         if request.user.id != prepare_delete_mes.receive_id:
             return JsonResponse(response_detail(403, "你想上天啊！！"))
         prepare_delete_mes.delete()
-        return JsonResponse(response_detail(200).
-                            update(self._get_message(request)), safe=False)
+        return JsonResponse(self._get_message(request), safe=False)
 
     def post(self, request, *args, **kwargs):
         # 发送消息
@@ -55,7 +54,7 @@ class MessageView(APIView):
             new_message.save()
         except Exception:
             return JsonResponse(response_detail(500))
-        return JsonResponse(response_detail(200).update(self._get_message(request)), safe=False)
+        return JsonResponse(self._get_message(request), safe=False)
 
     def put(self, request, *args, **kwargs):
         # 修改消息状态为已读或者星标

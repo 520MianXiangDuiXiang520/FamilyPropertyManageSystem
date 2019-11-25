@@ -65,6 +65,7 @@ class RegisterView(APIView):
         UserToken.objects.update_or_create(user=new_user, defaults={'token': u4})
         ret = response_detail(200)
         ret['token'] = u4
+        ret.update(new_user.toString())
         return JsonResponse(ret)
 
 
@@ -103,7 +104,9 @@ class UserInfoView(APIView):
             info = self.get_user_info(request, *args, **kwargs)
         except AttributeError:
             return JsonResponse(response_detail(500))
-        return JsonResponse(response_detail(200).update(info), safe=False)
+        ret = response_detail(200)
+        ret.update(info)
+        return JsonResponse(ret, safe=False)
 
     def put(self, request, *args, **kwargs):
         """
