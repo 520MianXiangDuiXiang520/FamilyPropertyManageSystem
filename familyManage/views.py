@@ -1,5 +1,5 @@
 from copy import copy
-
+from FamilyPropertyMS.util.Permission import ParentPermission
 from django.http import JsonResponse, QueryDict
 from rest_framework.views import APIView
 from messageManage.models import Message
@@ -55,7 +55,9 @@ class FamilyManageView(APIView):
 
 
 class MemberManageView(APIView):
-    # TODO ：需要家长权限
+    # 家长权限
+    permission_classes = [ParentPermission]
+
     @staticmethod
     def post(request, *args, **kwargs):
         # 家长邀请新成员

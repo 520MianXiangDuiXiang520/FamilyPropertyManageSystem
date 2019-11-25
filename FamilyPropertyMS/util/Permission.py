@@ -1,33 +1,38 @@
 from rest_framework.permissions import BasePermission
 
 
-class CommonPermission(BasePermission):
+class UserPermission(BasePermission):
     """
-    普通用户权限，作用于全局
+    普通用户权限
     """
+
     def has_permission(self, request, view):
-        print(request.user)
-        if request.user.user_type == 1:
-            return True
+        return True
 
     def has_object_permission(self, request, view, obj):
-        """
-        一旦获得View权限，将获得所有object权限
-        :return: True
-        """
         return True
 
 
-class VipPermission(BasePermission):
-    """
-    VIP 用户权限
-    """
-    message = '您首先要称为VIP才能访问'
+class ParentPermission(BasePermission):
+    message = '您没有访问该接口的权限（You do not have access to the interface）'
 
     def has_permission(self, request, view):
-        print(request.user)
-        if request.user.user_type == 2:
-            return True
+        """
+        先根据用户信息找到他对应的家庭，然后再看这个用户是不是这个家庭的家长
+        虽然目前一个用户只能对应一个家庭，可以在家庭成员表中直接判断，但。。。
+        """
+        # 如果用户都没有家庭，他肯定不具有家长权限
+        if not request.user.family1:
+            return False
+        family_number = request.user.family1.family_member
+        for parent_field in ['parent1', 'parent2']:
+            parent = getattr(family_number, parent_field)
+            if parent:
+                return request.user.id == parent.id
+        return False
 
     def has_object_permission(self, request, view, obj):
+        """
+        Return `True` if permission is granted, `False` otherwise.
+        """
         return True
