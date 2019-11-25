@@ -1,9 +1,6 @@
-import datetime
-
-import pytz
 from django.http import JsonResponse, QueryDict
 from rest_framework.views import APIView
-from FamilyPropertyMS.util.ResponseCode import CODE
+from FamilyPropertyMS.util.Tool import response_detail
 from userManage.models import User
 from .models import Message
 
@@ -14,19 +11,10 @@ from .models import Message
 class MessageView(APIView):
 
     @staticmethod
-    def _delete_overtime_message(message):
-        delta = datetime.datetime.now(tz=pytz.timezone('UTC')).replace(tzinfo=pytz.timezone('UTC')) -\
-                message['send_time'].replace(tzinfo=pytz.timezone('UTC'))
-        print(delta.seconds)
-        return delta.seconds > 60 * 60 * 24
-
-    def _get_message(self, request):
+    def _get_message(request):
         messages = Message.objects.filter(receive__id=request.user.id)
         message_list = []
         for i in messages.values():
-            if self._delete_overtime_message(i) and i['state'] == 2:
-                field = Message.objects.get(i['id'])
-                field.delete()
             i['send_id'] = User.objects.get(id=i['send_id']).id
             i['send_name'] = User.objects.get(id=i['send_id']).username
             i['receive_id'] = User.objects.get(id=i['receive_id']).id
@@ -36,7 +24,7 @@ class MessageView(APIView):
 
     def get(self, request, *args, **kwargs):
         # 获得消息列表
-        return JsonResponse(self._get_message(request), safe=False)
+        return JsonResponse(response_detail(200).update(self._get_message(request)), safe=False)
 
     def delete(self, request, *args, **kwargs):
         # 删除消息
@@ -45,12 +33,13 @@ class MessageView(APIView):
         try:
             prepare_delete_mes = Message.objects.get(id=message_id)
         except:
-            return JsonResponse(CODE[400])
+            return JsonResponse(response_detail(400))
         # 只能删自己的信息
         if request.user.id != prepare_delete_mes.receive_id:
-            return JsonResponse(CODE[403])
+            return JsonResponse(response_detail(403, "你想上天啊！！"))
         prepare_delete_mes.delete()
-        return JsonResponse(self._get_message(request), safe=False)
+        return JsonResponse(response_detail(200).
+                            update(self._get_message(request)), safe=False)
 
     def post(self, request, *args, **kwargs):
         # 发送消息
@@ -60,13 +49,13 @@ class MessageView(APIView):
         try:
             receive_id = User.objects.get(username=receive)
         except Exception:
-            return JsonResponse(CODE[400])
+            return JsonResponse(response_detail(400))
         try:
             new_message = Message(send=request.user, receive=receive_id, title=title, text=text)
             new_message.save()
         except Exception:
-            return JsonResponse(CODE[500])
-        return JsonResponse(self._get_message(request), safe=False)
+            return JsonResponse(response_detail(500))
+        return JsonResponse(response_detail(200).update(self._get_message(request)), safe=False)
 
     def put(self, request, *args, **kwargs):
         # 修改消息状态为已读或者星标
@@ -76,13 +65,13 @@ class MessageView(APIView):
         try:
             message = Message.objects.get(id=message_id)
         except:
-            return JsonResponse(CODE[400])
+            return JsonResponse(response_detail(400))
         if message_state not in (0, 1, 2, 3):
-            return JsonResponse(CODE[403])
+            return JsonResponse(response_detail(400, "别搞了！！！"))
         try:
             message.state = message_state
             message.save()
         except:
-            return JsonResponse(CODE[500])
+            return JsonResponse(response_detail(500))
         return JsonResponse(self._get_message(request), safe=False)
 

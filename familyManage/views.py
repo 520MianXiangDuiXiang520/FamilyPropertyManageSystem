@@ -1,9 +1,7 @@
-from copy import copy
 from FamilyPropertyMS.util.Permission import ParentPermission
 from django.http import JsonResponse, QueryDict
 from rest_framework.views import APIView
-from FamilyPropertyMS.util.Tool import send_message
-from FamilyPropertyMS.util.ResponseCode import CODE
+from FamilyPropertyMS.util.Tool import send_message, response_detail
 from userManage.models import User
 from .models import Family, FamilyMembers, Application
 
@@ -17,12 +15,12 @@ class FamilyManageView(APIView):
         family_name = request.POST.get('family_name')
         # 判断该用户能不能创建家庭（每个人只能加入一个家庭）
         if request.user.family1:
-            return JsonResponse(CODE[460])
+            return JsonResponse(response_detail(460, "每人只能加入一个家庭"))
         try:
             family_from_db = Family.objects.filter(
                 family_name=family_name)
         except:
-            return JsonResponse(CODE[500])
+            return JsonResponse(response_detail(500))
         # if family_from_db:
         #     msg = CODE[400]
         #     msg['msg'] = "家庭名重复"
@@ -36,9 +34,9 @@ class FamilyManageView(APIView):
             new_family.save()
             parent1.family1 = new_family
             parent1.save()
-            return JsonResponse(CODE[200])
+            return JsonResponse(response_detail(200))
         except:
-            return JsonResponse(CODE[500])
+            return JsonResponse(response_detail(500))
 
     # 查看家庭信息
     @staticmethod
@@ -47,7 +45,7 @@ class FamilyManageView(APIView):
         family = request.user.family1
         if family:
             family_info = family.toString()
-        ret = copy(CODE[200])
+        ret = response_detail(200)
         print(family_info)
         ret.update(family_info)
         return JsonResponse(ret, safe=False)
@@ -85,35 +83,31 @@ class MemberManageView(APIView):
         put_data = PUT.dict()
         for field in need_fields:
             if not put_data.get(field):
-                return JsonResponse(CODE[400])
+                return JsonResponse(response_detail(400, "您传递的数据不符合接口要求"))
             if field == 'is_agree':
                 if put_data.get(field) not in ['0', '1']:
-                    return JsonResponse(CODE[400])
+                    return JsonResponse(response_detail(400, "您只能选择同意或不同意"))
         child = User.objects.get(id=int(put_data.get('user_id')))
         # 根据家长ID找到家庭
         try:
             fm = User.objects.filter(id=int(put_data.get('parent_id'))).first().family1.family_member
         except TypeError:
             # 正常从前端界面发请求不会触发
-            ret = copy(CODE[400])
-            ret['msg'] = '没有这个家庭'
-            return JsonResponse(ret)
+            return JsonResponse(response_detail(400, "没有这个家庭"))
         the_family = User.objects.get(id=int(put_data.get('parent_id'))).family1
         if put_data.get('is_agree') == '1':
             send_message(request.user, child, "申请失败",
                          "{request.user.username} 不同意你加入家庭{the_family.family_name}.", 1)
-            return JsonResponse(CODE[200])
+            return JsonResponse(response_detail(200))
         get_application = Application.objects.filter(applicant=child,
                                                      interviewer=request.user).first()
         if not get_application:
-            return JsonResponse(CODE[418])
+            return JsonResponse(response_detail(400, "该用户从来没发起过请求"))
         for m in member_list:
             m_value = getattr(fm, m)
             # 将家庭加入到成员家庭项目中
             if child.family1:
-                ret = copy(CODE[460])
-                ret['msg'] = "只能加入一个家庭"
-                return JsonResponse(ret)
+                return JsonResponse(response_detail(460, "只能加入一个家庭"))
             # 将新成员加入到家庭成员表中
             # TODO：判断新成员是不是在家庭中了
             if m_value is None:
@@ -124,7 +118,7 @@ class MemberManageView(APIView):
                 send_message(request.user, child, "加入成功",
                              "{request.user.username} 同意你加入家庭{the_family.family_name}.", 1)
                 get_application.delete()
-                return JsonResponse(CODE[200])
+                return JsonResponse(response_detail(200))
 
 
 

@@ -1,15 +1,10 @@
-from copy import copy
-
-from django.db.models import Count
 from django.shortcuts import HttpResponse
 from django.http import JsonResponse, QueryDict
 from rest_framework.views import APIView
 import uuid
 from .models import User, UserToken
-from FamilyPropertyMS.util.ResponseCode import CODE
-from FamilyPropertyMS.util.Tool import timeout_judgment, send_message
+from FamilyPropertyMS.util.Tool import timeout_judgment, send_message, response_detail
 from familyManage.models import Family, Application
-from messageManage.models import Message
 
 
 # Create your views here.
@@ -25,21 +20,22 @@ class LoginView(APIView):
 
     @staticmethod
     def post(request, *args, **kwargs):
-        ret = CODE[200]
         try:
             username = request.POST.get('username')
             password = request.POST.get('password')
             user = User.objects.filter(username=username, password=password).first()
             if not user:
-                ret = copy(CODE[400])
-                ret['msg'] = '用户不存在'
-                return JsonResponse(ret)
+                return JsonResponse(response_detail(400, "用户名或密码错误"))
             u4 = uuid.uuid4()  # 生成uuid4
             UserToken.objects.update_or_create(user=user, defaults={'token': u4})
+            # TODO: 老是有登录产生了uuid但存不到数据库的情况，再检查一遍
+            if not UserToken.objects.filter(token=u4).first():
+                UserToken.objects.update_or_create(user=user, defaults={'token': u4})
+            ret = response_detail(200)
             ret['token'] = u4
             return JsonResponse(ret)
         except Exception:
-            return JsonResponse(CODE[400])
+            return JsonResponse(response_detail(400))
 
 
 class RegisterView(APIView):
@@ -54,24 +50,20 @@ class RegisterView(APIView):
             password = request.POST.get('password')
             pwdagain = request.POST.get('pwdagain')
         except:
-            return JsonResponse(CODE[400])
+            return JsonResponse(response_detail(400))
         try:
             user_in_db = User.objects.filter(username=username)
         except:
-            return JsonResponse(CODE[500])
+            return JsonResponse(response_detail(500))
         if user_in_db:
-            ret = copy(CODE[400])
-            ret['msg'] = "用户名重复"
-            return JsonResponse(ret)
+            return JsonResponse(response_detail(400, "用户名重复"))
         if password != pwdagain:
-            ret = copy(CODE[400])
-            ret['msg'] = "两次密码不一致"
-            return JsonResponse(ret)
+            return JsonResponse(response_detail(400, '两次密码不一致'))
         new_user = User.objects.create(username=username, password=password)
         new_user.save()
         u4 = uuid.uuid4()  # 生成uuid4
         UserToken.objects.update_or_create(user=new_user, defaults={'token': u4})
-        ret = copy(CODE[200])
+        ret = response_detail(200)
         ret['token'] = u4
         return JsonResponse(ret)
 
@@ -84,15 +76,12 @@ class LogoutView(APIView):
         token = DELETE.get('token')
         try:
             UserToken.objects.get(token=token).delete()
-            return JsonResponse(CODE[200])
+            return JsonResponse(response_detail(200))
         except:
-            ret = copy(CODE[400])
-            ret['msg'] = "登出失败"
-            return JsonResponse(ret)
+            return JsonResponse(response_detail(400, '登出失败'))
 
 
 class UserInfoView(APIView):
-    scope = 'THROTTLE'
     user_info_matters = [i.name for i in User._meta.fields if i.name != 'password']
 
     @staticmethod
@@ -112,10 +101,9 @@ class UserInfoView(APIView):
         """
         try:
             info = self.get_user_info(request, *args, **kwargs)
-            print(info)
         except AttributeError:
-            return JsonResponse(CODE[500])
-        return JsonResponse(info, safe=False)
+            return JsonResponse(response_detail(500))
+        return JsonResponse(response_detail(200).update(info), safe=False)
 
     def put(self, request, *args, **kwargs):
         """
@@ -132,9 +120,9 @@ class UserInfoView(APIView):
                         setattr(request.user, field, data[field])
                         request.user.save()
                     except:
-                        return JsonResponse(CODE[500])
+                        return JsonResponse(response_detail(500))
         ret = self.get_user_info(request)
-        ret.update(CODE[200])
+        ret.update(response_detail(200))
         return JsonResponse(ret, safe=False)
 
 
@@ -165,7 +153,7 @@ class AboutFamilyView(APIView):
         fm_fields = [getattr(family_mumber, f.name)
                      for f in family_mumber._meta.fields if f.name != 'id']
         if None not in fm_fields:
-            return JsonResponse(CODE[600])
+            return JsonResponse(response_detail(600, "这里人满了"))
 
     def post(self, request, *args, **kwargs):
         """
@@ -176,23 +164,19 @@ class AboutFamilyView(APIView):
         family_id = request.POST.get('family_id')
         family = Family.objects.filter(id=family_id).first()
         if not family:
-            return JsonResponse(CODE[400])
+            return JsonResponse(response_detail(400))
         self_applicant = Application.objects.filter(applicant=request.user).first()
         if self_applicant:
             # 如果用户发起过请求
             if not timeout_judgment(self_applicant, 'start_time', '1/d'):
-                ret = copy(CODE[460])
-                ret['msg'] = '你已经申请过了，明天再来!!!!'
-                return JsonResponse(ret, safe=False)
+                return JsonResponse(response_detail(460, "你已经申请过了，明天再来!!!!"), safe=False)
         # 限制一个用户只能加入一个家庭
         if request.user.family1:
-            ret = copy(CODE[460])
-            ret['msg'] = "只能加入一个家庭!!!"
-            return JsonResponse(ret)
+            return JsonResponse(response_detail(460, "只能加入一个家庭!!!"))
         family_mumber = family.family_member
         self._people_reached_upper_limit_judge(family_mumber)
         self._notify_all_parents(request, family_mumber)
-        return JsonResponse(CODE[200], safe=False)
+        return JsonResponse(response_detail(200), safe=False)
 
     @staticmethod
     def put(request, *args, **kwargs):

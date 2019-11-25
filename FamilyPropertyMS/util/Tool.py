@@ -1,11 +1,14 @@
 import datetime
-
+from copy import copy
 import pytz
 from django.http import JsonResponse
-
 from FamilyPropertyMS.util.ResponseCode import CODE
 from messageManage.models import Message
 from userManage.models import User
+
+
+class ToolException(Exception):
+    pass
 
 
 def timeout_judgment(field, attr: str, time_line: str):
@@ -38,3 +41,13 @@ def send_message(send: User, receive: User, title: str, text: str, m_type: int):
         new_message.save()
     except:
         return JsonResponse(CODE[500])
+
+
+def response_detail(status: int, detail: str = None) -> dict:
+    try:
+        code = copy(CODE[status])
+    except KeyError:
+        raise ToolException("code必须在ResponseCode.py中存在")
+    if detail:
+        code['msg'] = detail
+    return code

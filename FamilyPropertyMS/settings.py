@@ -133,10 +133,10 @@ REST_FRAMEWORK = {
     'UNAUTHENTICATED_TOKEN': None,
     'DEFAULT_THROTTLE_CLASSES': ['FamilyPropertyMS.util.Throttles.Throttles'],
     'DEFAULT_THROTTLE_RATES': {
-        'THROTTLE': '30/m'
+        'THROTTLE': '30/m',
     }
 
-    # 'DEFAULT_PERMISSION_CLASSES': ['api.utils.Permission.CommonPermission']
+    # 'DEFAULT_PERMISSION_CLASSES': ['api.utils.Permission.UserPermission']
 }
 
 STATIC_URL = '/static/'
