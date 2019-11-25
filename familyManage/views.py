@@ -79,7 +79,7 @@ class MemberManageView(APIView):
         """
         member_list = ['members3', 'members4',
                        'members5', 'members6', 'members7', 'members8']
-        need_fields = ['family_id', 'child_id', 'is_agree']
+        need_fields = ['parent_id', 'user_id', 'is_agree']
         PUT = QueryDict(request.body)
         put_data = PUT.dict()
         for field in need_fields:
@@ -88,11 +88,16 @@ class MemberManageView(APIView):
             if field == 'is_agree':
                 if put_data.get(field) not in ['0', '1']:
                     return JsonResponse(CODE[400])
-        child = User.objects.get(id=int(put_data.get('child_id')))
-        fm = FamilyMembers.objects.filter(id=int(put_data.get('family_id'))).first()
-        the_family = Family.objects.get(id=int(put_data.get('family_id')))
-        if not fm:
-            return JsonResponse(CODE[500])
+        child = User.objects.get(id=int(put_data.get('user_id')))
+        # 根据家长ID找到家庭
+        try:
+            fm = User.objects.filter(id=int(put_data.get('parent_id'))).first().family1.family_member
+        except TypeError:
+            # 正常从前端界面发请求不会触发
+            ret = copy(CODE[400])
+            ret['msg'] = '没有这个家庭'
+            return JsonResponse(ret)
+        the_family = User.objects.get(id=int(put_data.get('parent_id'))).family1
         if put_data.get('is_agree') == '1':
             new_message = Message(send=request.user,
                                   receive=child,

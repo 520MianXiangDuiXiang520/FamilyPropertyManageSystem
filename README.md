@@ -393,9 +393,8 @@ STATE = [(0, '未读'), (1, '星标'), (2, '已读')]
 
 ```json
 {
-	"family_id": "2",
-	"child_id": "5",
-	"request_time": "111",
+	"parent_id": "2",
+	"user_id": "5",
 	"is_agree": "0"
 }
 ```

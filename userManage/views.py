@@ -198,12 +198,12 @@ class AboutFamilyView(APIView):
             # 如果用户发起过请求
             if not timeout_judgment(self_applicant, 'start_time', '1/d'):
                 ret = copy(CODE[460])
-                ret['msg'] = '你已经申请过了，明天再来！！'
+                ret['msg'] = '你已经申请过了，明天再来!!!!'
                 return JsonResponse(ret, safe=False)
         # 限制一个用户只能加入一个家庭
         if request.user.family1:
             ret = copy(CODE[460])
-            ret['msg'] = "只能加入一个家庭"
+            ret['msg'] = "只能加入一个家庭!!!"
             return JsonResponse(ret)
         family_mumber = family.family_member
         self._people_reached_upper_limit_judge(family_mumber)
