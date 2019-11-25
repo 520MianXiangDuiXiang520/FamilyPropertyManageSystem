@@ -1,6 +1,11 @@
 import datetime
 
 import pytz
+from django.http import JsonResponse
+
+from FamilyPropertyMS.util.ResponseCode import CODE
+from messageManage.models import Message
+from userManage.models import User
 
 
 def timeout_judgment(field, attr: str, time_line: str):
@@ -16,3 +21,20 @@ def timeout_judgment(field, attr: str, time_line: str):
     delta = (datetime.datetime.now(tz=pytz.timezone('UTC')).replace(tzinfo=pytz.timezone('UTC'))
              - db_time.replace(tzinfo=pytz.timezone('UTC')))
     return delta.seconds > {'s': 1, 'm': 60, 'h': 3600, 'd': 86400}[period] * int(num)
+
+
+def send_message(send: User, receive: User, title: str, text: str, m_type: int):
+    """
+    发送一条消息
+    :param send: 发送者
+    :param receive: 接收者
+    :param title: 消息标题
+    :param text: 消息正文
+    :param m_type: 消息类型（0为普通用户消息， 1为系统通知消息， 2为请求确认类消息）
+    2类消息在前端渲染时需要渲染一个form
+    """
+    try:
+        new_message = Message(send=send, receive=receive, title=title, text=text, type=m_type)
+        new_message.save()
+    except:
+        return JsonResponse(CODE[500])

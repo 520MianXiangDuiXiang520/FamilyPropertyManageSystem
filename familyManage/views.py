@@ -2,7 +2,7 @@ from copy import copy
 from FamilyPropertyMS.util.Permission import ParentPermission
 from django.http import JsonResponse, QueryDict
 from rest_framework.views import APIView
-from messageManage.models import Message
+from FamilyPropertyMS.util.Tool import send_message
 from FamilyPropertyMS.util.ResponseCode import CODE
 from userManage.models import User
 from .models import Family, FamilyMembers, Application
@@ -43,7 +43,6 @@ class FamilyManageView(APIView):
     # 查看家庭信息
     @staticmethod
     def get(request, *args, **kwargs):
-
         family_info = {'family': 'null'}
         family = request.user.family1
         if family:
@@ -101,12 +100,8 @@ class MemberManageView(APIView):
             return JsonResponse(ret)
         the_family = User.objects.get(id=int(put_data.get('parent_id'))).family1
         if put_data.get('is_agree') == '1':
-            new_message = Message(send=request.user,
-                                  receive=child,
-                                  title="申请失败！",
-                                  text=f"{request.user.username} 不同意你加入家庭 "
-                                       f"{the_family.family_name}.")
-            new_message.save()
+            send_message(request.user, child, "申请失败",
+                         "{request.user.username} 不同意你加入家庭{the_family.family_name}.", 1)
             return JsonResponse(CODE[200])
         get_application = Application.objects.filter(applicant=child,
                                                      interviewer=request.user).first()
@@ -124,15 +119,10 @@ class MemberManageView(APIView):
             if m_value is None:
                 setattr(fm, m, child)
                 fm.save()
-
                 child.family1 = the_family
                 child.save()
-                new_message = Message(send=request.user,
-                                      receive=child,
-                                      title="加入成功！",
-                                      text=f"{request.user.username} 同意你加入家庭 "
-                                           f"{the_family.family_name}.")
-                new_message.save()
+                send_message(request.user, child, "加入成功",
+                             "{request.user.username} 同意你加入家庭{the_family.family_name}.", 1)
                 get_application.delete()
                 return JsonResponse(CODE[200])
 

@@ -7,7 +7,7 @@ from rest_framework.views import APIView
 import uuid
 from .models import User, UserToken
 from FamilyPropertyMS.util.ResponseCode import CODE
-from FamilyPropertyMS.util.Tool import timeout_judgment
+from FamilyPropertyMS.util.Tool import timeout_judgment, send_message
 from familyManage.models import Family, Application
 from messageManage.models import Message
 
@@ -139,22 +139,6 @@ class UserInfoView(APIView):
 
 
 class AboutFamilyView(APIView):
-    @staticmethod
-    def _send_message(send: User, receive: User, title: str, text: str, m_type: int):
-        """
-        发送一条消息
-        :param send: 发送者
-        :param receive: 接收者
-        :param title: 消息标题
-        :param text: 消息正文
-        :param m_type: 消息类型（0为普通用户消息， 1为系统通知消息， 2为请求确认类消息）
-        2类消息在前端渲染时需要渲染一个form
-        """
-        try:
-            new_message = Message(send=send, receive=receive, title=title, text=text, type=m_type)
-            new_message.save()
-        except:
-            return JsonResponse(CODE[500])
 
     def _notify_all_parents(self, request, family_mumber):
         """
@@ -166,8 +150,8 @@ class AboutFamilyView(APIView):
 
         for parent in [family_mumber.parent1, family_mumber.parent2]:
             if parent is not None:
-                self._send_message(request.user, family_mumber.parent1, "加入家庭请求",
-                                   f"{request.user.username} (id = {request.user.id}) 请求加入您的家庭， 是否同意？", 2)
+                send_message(request.user, family_mumber.parent1, "加入家庭请求",
+                             f"{request.user.username} (id = {request.user.id}) 请求加入您的家庭， 是否同意？", 2)
                 new_application = Application(applicant=request.user,
                                               interviewer=family_mumber.parent1)
                 new_application.save()
@@ -219,5 +203,3 @@ class AboutFamilyView(APIView):
         # 3. 加入家庭表
         # 4. 不同意法消息给家长
         return JsonResponse("pass", safe=False)
-
-
