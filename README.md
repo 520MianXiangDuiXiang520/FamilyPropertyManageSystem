@@ -12,6 +12,17 @@
 ||（4）借还钱管理|
 ||（5） 生成资产报告|
 
+依赖
+
+```txt
+Django==2.2.2
+djangorestframework==3.9.4
+PyMySQL==0.9.3
+pytz==2019.1
+sqlparse==0.3.0
+django-cors-headers==3.2.0
+```
+
 
 ## 接口文档
 
