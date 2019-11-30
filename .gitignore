@@ -1,0 +1,14 @@
+# 数据库文件
+*.sqlite3
+
+# 预编译文件
+*.pyc 
+ 
+# 迁移文件
+/familyManage/migrations
+/billsManage/migrations
+/messageManage/migrations
+/userManage/migrations
+
+# 编辑器留下的文件
+.idea/
