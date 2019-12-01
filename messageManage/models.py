@@ -16,3 +16,4 @@ class Message(models.Model):
 
     class Meta:
         db_table = 'MessageDT'
+        ordering = ['-send_time', 'state']
