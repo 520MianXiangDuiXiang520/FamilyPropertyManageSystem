@@ -43,11 +43,13 @@ def send_message(send: User, receive: User, title: str, text: str, m_type: int):
         return JsonResponse(CODE[500])
 
 
-def response_detail(status: int, detail: str = None) -> dict:
+def response_detail(status: int, detail: str = None, data=None) -> dict:
     try:
         code = copy(CODE[status])
     except KeyError:
         raise ToolException("code必须在ResponseCode.py中存在")
     if detail:
         code['msg'] = detail
+    if data:
+        code[data] = data
     return code
