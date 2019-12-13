@@ -1,7 +1,5 @@
-
 from django.http import JsonResponse
 from rest_framework.views import APIView
-from rest_framework import serializers
 from FamilyPropertyMS.util.Tool import response_detail
 from .models import UserBills
 from .MySerializers import BillsSerializer

@@ -116,7 +116,7 @@ class MemberManageView(APIView):
                 child.family1 = the_family
                 child.save()
                 send_message(request.user, child, "加入成功",
-                             "{request.user.username} 同意你加入家庭{the_family.family_name}.", 1)
+                             f"{request.user.username} 同意你加入家庭{the_family.family_name}.", 1)
                 get_application.delete()
                 return JsonResponse(response_detail(200))
 

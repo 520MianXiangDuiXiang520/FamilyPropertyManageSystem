@@ -51,5 +51,5 @@ def response_detail(status: int, detail: str = None, data=None) -> dict:
     if detail:
         code['msg'] = detail
     if data:
-        code[data] = data
+        code['data'] = data
     return code
