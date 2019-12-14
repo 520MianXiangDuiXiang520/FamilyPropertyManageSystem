@@ -17,7 +17,8 @@ class UserBills(models.Model):
     time = models.DateTimeField(auto_now_add=True, db_column='创建时间')
     money = models.FloatField(db_column="金额")
     type = models.SmallIntegerField(choices=BILL_TYPE, db_column='类型')
-    remarks = models.TextField(max_length=1000, blank=True, db_column='备注')
+    concrete_type = models.CharField(max_length=100, default="其他", db_column='具体类型')
+    remarks = models.TextField(max_length=1000, blank=True, null=True, db_column='备注')
 
     class Meta:
         db_table = '用户账单'

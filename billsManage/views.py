@@ -3,12 +3,52 @@ from rest_framework.views import APIView
 from FamilyPropertyMS.util.Tool import response_detail
 from .models import UserBills, FamilyBills
 from .MySerializers import BillsSerializer
-from abc import abstractmethod, ABC
-
+from abc import abstractmethod
+from django.db.models import Sum
 from datetime import datetime
 
 
 class BIllBaseClass:
+    @staticmethod
+    def statistical_billing_data(request):
+        """
+        统计账单数据
+        1. 统计收入支出总数
+        2. 按具体类型统计
+        """
+        statistical_data = {}
+        income_data = []
+        expend_data = []
+        income_projects = []
+        income_money = []
+        expend_projects = []
+        expend_money = []
+        income_bills = UserBills.objects.filter(user=request.user, type=0)
+        expend_bills = UserBills.objects.filter(user=request.user, type=10)
+        all_income = income_bills.aggregate(Sum("money"))
+        all_expend = expend_bills.aggregate(Sum('money'))
+        staticmethod_income = income_bills.values('concrete_type').\
+            annotate(Sum('money')).values('concrete_type', 'money__sum')
+        staticmethod_expend = expend_bills.values('concrete_type').\
+            annotate(Sum('money')).values('concrete_type', 'money__sum')
+
+        for i in staticmethod_income:
+            income_projects.append(i['concrete_type'])
+            income_money.append(i['money__sum'])
+        for i in staticmethod_expend:
+            expend_projects.append(i['concrete_type'])
+            expend_money.append(i['money__sum'])
+        overage = all_income['money__sum'] - all_expend['money__sum']
+        statistical_data.update({'all_income': all_income['money__sum']})
+        statistical_data.update({'all_expend': all_expend['money__sum']})
+        statistical_data.update({'overage': overage})
+        statistical_data.update({'income_projects': income_projects})
+        statistical_data.update({'income_money': income_money})
+        statistical_data.update({'expend_projects': expend_projects})
+        statistical_data.update({'expend_money': expend_money})
+        print(statistical_data)
+        return statistical_data
+
     @abstractmethod
     def get(self, request, *args, **kwargs):
         pass
@@ -55,7 +95,7 @@ class ExpendView(APIView, BIllBaseClass):
     def get(self, request, *args, **kwargs):
         income_bill = UserBills.objects.filter(user=request.user, type=10)
         bills = BillsSerializer(instance=income_bill, many=True)
-        return JsonResponse(bills.data, safe=False)
+        return JsonResponse(response_detail(200, data=bills.data), safe=False)
 
 
 class IncomeView(APIView, BIllBaseClass):
@@ -72,3 +112,7 @@ class IncomeView(APIView, BIllBaseClass):
         bills = BillsSerializer(instance=income_bill, many=True)
         return JsonResponse(bills.data, safe=False)
 
+
+class StatisticsView(APIView, BIllBaseClass):
+    def get(self, request, *args, **kwargs):
+        return JsonResponse(response_detail(200, data=self.statistical_billing_data(request)))
