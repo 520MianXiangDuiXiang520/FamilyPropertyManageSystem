@@ -544,3 +544,21 @@ TODO：
 }
 ```
 
+#### 修改账单
+
+|url|http://127.0.0.1:8000/api/v1/bill/income/ http://127.0.0.1:8000/api/v1/bill/expend/|
+|---|---|
+|method|PUT|
+|认证|需要认证|
+|权限|无|
+
+请求格式
+
+```json
+{
+	"bill_id": "16",
+	"field_name": "money",
+	"new_value": "1234"
+}
+```
+

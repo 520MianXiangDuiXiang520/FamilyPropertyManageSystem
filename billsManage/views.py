@@ -1,4 +1,4 @@
-from django.http import JsonResponse
+from django.http import JsonResponse, QueryDict
 from rest_framework.views import APIView
 from FamilyPropertyMS.util.Tool import response_detail
 from .models import UserBills, FamilyBills
@@ -49,11 +49,17 @@ class BIllBaseClass:
         print(statistical_data)
         return statistical_data
 
+    def _get_info(self, request, bill_type: int):
+        income_bill = UserBills.objects.filter(user=request.user, type=bill_type)
+        bills = BillsSerializer(instance=income_bill, many=True)
+        return bills.data
+
     @abstractmethod
     def get(self, request, *args, **kwargs):
         pass
 
-    def post(self, request):
+    @staticmethod
+    def _post(request):
         bills_type = int(request.POST.get('type'))
         if not bills_type:
             return JsonResponse(response_detail(400, detail="类型缺失"))
@@ -89,6 +95,29 @@ class BIllBaseClass:
         result = response_detail(200, data=bills.data)
         return JsonResponse(result)
 
+    def _put(self, request, bill_type: int):
+        PUT = QueryDict(request.body)
+        put_data = PUT.dict()
+        need_field = ('bill_id', 'field_name', 'new_value')
+        # 检查request中是否包含所需要的字段
+        for field in need_field:
+            if field not in put_data:
+                return JsonResponse(response_detail(400, detail="参数缺失"))
+        # 检查每一个参数的正确性
+        bill = UserBills.objects.filter(id=int(put_data['bill_id']),
+                                        type=bill_type, user=request.user).first()
+        if not bill:
+            return JsonResponse(response_detail(400, detail="账单不存在"))
+        if not getattr(UserBills, put_data['field_name'], None):
+            return JsonResponse(response_detail(400, detail="参数错误(field_name is not find)"))
+        try:
+            setattr(bill, put_data['field_name'], put_data['new_value'])
+            bill.save()
+            data = self._get_info(request, bill_type)
+            return JsonResponse(response_detail(200, data=data))
+        except Exception:
+            return JsonResponse(response_detail(500, detail="修改失败"))
+
 
 class ExpendView(APIView, BIllBaseClass):
     # 支出视图
@@ -97,20 +126,25 @@ class ExpendView(APIView, BIllBaseClass):
         bills = BillsSerializer(instance=income_bill, many=True)
         return JsonResponse(response_detail(200, data=bills.data), safe=False)
 
+    def post(self, request, *args, **kwargs):
+        return self._post(request)
+
+    def put(self, request,  *args, **kwargs):
+        return self._put(request, bill_type=10)
+
 
 class IncomeView(APIView, BIllBaseClass):
     # 收入视图
     def get(self, request, *args, **kwargs):
-        """
-        查看收入账单
-        :param request:
-        :param args:
-        :param kwargs:
-        :return:
-        """
         income_bill = UserBills.objects.filter(user=request.user, type=0)
         bills = BillsSerializer(instance=income_bill, many=True)
         return JsonResponse(bills.data, safe=False)
+
+    def post(self, request, *args, **kwargs):
+        return self._post(request)
+
+    def put(self, request,  *args, **kwargs):
+        return self._put(request, bill_type=0)
 
 
 class StatisticsView(APIView, BIllBaseClass):
