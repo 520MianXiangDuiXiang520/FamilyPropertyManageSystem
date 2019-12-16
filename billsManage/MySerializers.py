@@ -14,4 +14,4 @@ class BillsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = UserBills
-        fields = ['id', 'remarks', 'money', 'time', 'username', 'bill_type']
+        fields = ['id', 'remarks', 'money', 'time', 'username', 'bill_type', 'concrete_type']

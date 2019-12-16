@@ -28,9 +28,6 @@ class LoginView(APIView):
                 return JsonResponse(response_detail(400, "用户名或密码错误"))
             u4 = uuid.uuid4()  # 生成uuid4
             UserToken.objects.update_or_create(user=user, defaults={'token': u4})
-            # TODO: 老是有登录产生了uuid但存不到数据库的情况，再检查一遍
-            if not UserToken.objects.filter(token=u4).first():
-                UserToken.objects.update_or_create(user=user, defaults={'token': u4})
             ret = response_detail(200)
             ret['token'] = u4
             return JsonResponse(ret)

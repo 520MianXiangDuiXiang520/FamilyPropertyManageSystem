@@ -1,4 +1,5 @@
 from django.http import JsonResponse, QueryDict
+from rest_framework.parsers import JSONParser
 from rest_framework.views import APIView
 from FamilyPropertyMS.util.Tool import response_detail
 from .models import UserBills, FamilyBills
@@ -60,8 +61,10 @@ class BIllBaseClass:
 
     @staticmethod
     def _post(request):
-        bills_type = int(request.POST.get('type'))
-        if not bills_type:
+        print(request.data)
+        try:
+            bills_type = int(request.POST.get('bill_type'))
+        except TypeError:
             return JsonResponse(response_detail(400, detail="类型缺失"))
         print(bills_type)
         if int(bills_type) not in (0, 1, 10, 11, 12):
@@ -69,7 +72,7 @@ class BIllBaseClass:
         need_fields = ['money', 'remarks', 'time']
         for field in need_fields:
             if not request.POST.get(field):
-                return JsonResponse(response_detail(400))
+                return JsonResponse(response_detail(400, detail=f"{field}缺失"))
         # 判断用户描述是否超出数据库长度限制
         if len(request.POST.get('remarks')) > 1000:
             return JsonResponse(response_detail(400, "长度超出数据库限制"))
@@ -81,8 +84,13 @@ class BIllBaseClass:
             field_time = datetime.strptime(request.POST['time'], '%Y-%m-%d %H:%M:%S')
         except ValueError:
             return JsonResponse(response_detail(400, '时间格式有误，应为 %Y-%m-%d %H:%M:%S'))
-        new_field = UserBills(user=request.user, money=request.POST['money'],
-                              type=bills_type, time=field_time, remarks=request.POST['remarks'])
+        if request.POST.get('concrete_type'):
+            new_field = UserBills(user=request.user, money=request.POST['money'],
+                                  type=bills_type, time=field_time, remarks=request.POST['remarks'],
+                                  concrete_type=request.POST['concrete_type'])
+        else:
+            new_field = UserBills(user=request.user, money=request.POST['money'],
+                                  type=bills_type, time=field_time, remarks=request.POST['remarks'])
         new_field.save()
         # 如果用户有家庭，并且 is_add_to_family = 1， 就把该账单加入到家庭账单
         print(request.user.family1)
