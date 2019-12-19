@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="da3f3696-3530-4d26-aff3-00c96f153683" name="Default Changelist" comment="缝缝补补">
+      <change afterPath="$PROJECT_DIR$/.idea/FamilyPropertyMS.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/datalore.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/billsManage/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/billsManage/migrations/0002_auto_20191213_2140.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/billsManage/migrations/0003_auto_20191214_1328.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/billsManage/migrations/0004_auto_20191214_1331.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/billsManage/migrations/0005_userbills_concrete_type.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/billsManage/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/borrowingMoneyManagement/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/borrowingMoneyManagement/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/borrowingMoneyManagement/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/borrowingMoneyManagement/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/borrowingMoneyManagement/migrations/0002_auto_20191219_2040.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/borrowingMoneyManagement/migrations/0003_auto_20191219_2127.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/borrowingMoneyManagement/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/borrowingMoneyManagement/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/borrowingMoneyManagement/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/borrowingMoneyManagement/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/borrowingMoneyManagement/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/familyManage/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/familyManage/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/messageManage/migrations/0003_auto_20191124_1638.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FamilyPropertyMS/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/FamilyPropertyMS/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FamilyPropertyMS/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/FamilyPropertyMS/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FamilyPropertyMS/util/MyAuthentication.py" beforeDir="false" afterPath="$PROJECT_DIR$/FamilyPropertyMS/util/MyAuthentication.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/billsManage/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/billsManage/views.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+        <option value="Jupyter Notebook" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="PUSH_TAGS">
+      <GitPushTagMode>
+        <option name="argument" value="--tags" />
+        <option name="title" value="All" />
+      </GitPushTagMode>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="E:\DjangoTestvir\Project\FamilyPropertyMS\.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="JupyterTrust" id="97120213-62b6-4c50-9168-695edc92ac1e" />
+  <component name="ProjectId" id="1TeQn2rkRXzfk9e1fCafwhwLQVD" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/static/dependence/reqwest" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\DjangoTestvir\Project\FamilyPropertyMS\templates\static\dependence\reqwest" />
+      <recent name="E:\DjangoTestvir\Project\FamilyPropertyMS\templates\static\dependence\vue" />
+      <recent name="E:\DjangoTestvir\Project\FamilyPropertyMS\FamilyPropertyMS\util" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\DjangoTestvir\Project\FamilyPropertyMS" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Django server.FamilyPropertyMS">
+    <configuration name="Test: " type="DjangoTestsConfigurationType">
+      <module name="FamilyPropertyMS" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="TARGET" value="" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="FamilyPropertyMS" type="Python.DjangoServer" factoryName="Django server">
+      <module name="FamilyPropertyMS" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="FamilyPropertyMS.settings" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="da3f3696-3530-4d26-aff3-00c96f153683" name="Default Changelist" comment="" />
+      <created>1573818244558</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1573818244558</updated>
+      <workItem from="1573818273863" duration="79694000" />
+      <workItem from="1574248991440" duration="46000" />
+      <workItem from="1574414592907" duration="3468000" />
+      <workItem from="1574851395294" duration="210000" />
+      <workItem from="1575024285090" duration="170000" />
+      <workItem from="1575177754380" duration="3304000" />
+      <workItem from="1575210715562" duration="34000" />
+      <workItem from="1575245750728" duration="17000" />
+      <workItem from="1575245943364" duration="6103000" />
+      <workItem from="1576238005306" duration="19889000" />
+      <workItem from="1576391610084" duration="11733000" />
+      <workItem from="1576501354878" duration="2844000" />
+      <workItem from="1576656249259" duration="3586000" />
+      <workItem from="1576676758064" duration="1264000" />
+      <workItem from="1576720514269" duration="11530000" />
+    </task>
+    <task id="LOCAL-00001" summary="（BUG）状态码拷贝后修改">
+      <created>1574576010352</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1574576010352</updated>
+    </task>
+    <task id="LOCAL-00002" summary="更新查看家庭信息的接口文档">
+      <created>1574576574263</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1574576574263</updated>
+    </task>
+    <task id="LOCAL-00003" summary="添加新账单管理app（billsManage）">
+      <created>1574585321728</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1574585321728</updated>
+    </task>
+    <task id="LOCAL-00004" summary="用户申请加入家庭时，添加了一天只能申请一次的限制">
+      <created>1574602356748</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1574602356749</updated>
+    </task>
+    <task id="LOCAL-00005" summary="增加了一个工具函数，用来判断数据库中某个字段有没有超时">
+      <created>1574602551457</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1574602551457</updated>
+    </task>
+    <task id="LOCAL-00006" summary="修改家长审核用户加入家庭接口中不合理的地方">
+      <created>1574670233963</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1574670233964</updated>
+    </task>
+    <task id="LOCAL-00007" summary="定义权限管理类，设置家庭管理接口只对家长可见">
+      <created>1574682882586</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1574682882586</updated>
+    </task>
+    <task id="LOCAL-00008" summary="增加一个用来发送消息工具函数，用它重写了冗余的代码">
+      <created>1574683735314</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1574683735314</updated>
+    </task>
+    <task id="LOCAL-00009" summary="每次都copy(CODE[200])也太傻了吧">
+      <created>1574689276635</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1574689276635</updated>
+    </task>
+    <task id="LOCAL-00010" summary="改BUG">
+      <created>1574692304773</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1574692304773</updated>
+    </task>
+    <task id="LOCAL-00011" summary="升级Django到2.2.7">
+      <created>1575179785056</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1575179785056</updated>
+    </task>
+    <task id="LOCAL-00012" summary="对消息按时间排序">
+      <created>1575179836715</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1575179836715</updated>
+    </task>
+    <task id="LOCAL-00013" summary="修改返回消息工具">
+      <created>1576244863166</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1576244863166</updated>
+    </task>
+    <task id="LOCAL-00014" summary="独立家庭账单和账单数据表">
+      <created>1576244935679</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1576244935679</updated>
+    </task>
+    <task id="LOCAL-00015" summary="查看账单和增加账单完成">
+      <created>1576245187239</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1576245187239</updated>
+    </task>
+    <task id="LOCAL-00016" summary="使用REST序列化器代替原来手写toString">
+      <created>1576245251607</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1576245251607</updated>
+    </task>
+    <task id="LOCAL-00017" summary="实现查询和创建支出API">
+      <created>1576300152816</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1576300152816</updated>
+    </task>
+    <task id="LOCAL-00018" summary="账单统计">
+      <created>1576334288341</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1576334288341</updated>
+    </task>
+    <task id="LOCAL-00019" summary="修改账单">
+      <created>1576396541125</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1576396541125</updated>
+    </task>
+    <task id="LOCAL-00020" summary="缝缝补补">
+      <created>1576506609600</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1576506609600</updated>
+    </task>
+    <task id="LOCAL-00021" summary="缝缝补补">
+      <created>1576724285201</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1576724285201</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="requirements.txt" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="（BUG）状态码拷贝后修改" />
+    <MESSAGE value="更新查看家庭信息的接口文档" />
+    <MESSAGE value="添加新账单管理app（billsManage）" />
+    <MESSAGE value="用户申请加入家庭时，添加了一天只能申请一次的限制" />
+    <MESSAGE value="增加了一个工具函数，用来判断数据库中某个字段有没有超时" />
+    <MESSAGE value="修改家长审核用户加入家庭接口中不合理的地方" />
+    <MESSAGE value="定义权限管理类，设置家庭管理接口只对家长可见" />
+    <MESSAGE value="增加一个用来发送消息工具函数，用它重写了冗余的代码" />
+    <MESSAGE value="每次都copy(CODE[200])也太傻了吧" />
+    <MESSAGE value="改BUG" />
+    <MESSAGE value="升级Django到2.2.7" />
+    <MESSAGE value="对消息按时间排序" />
+    <MESSAGE value="修改返回消息工具" />
+    <MESSAGE value="独立家庭账单和账单数据表" />
+    <MESSAGE value="查看账单和增加账单完成" />
+    <MESSAGE value="使用REST序列化器代替原来手写toString" />
+    <MESSAGE value="实现查询和创建支出API" />
+    <MESSAGE value="账单统计" />
+    <MESSAGE value="修改账单" />
+    <MESSAGE value="缝缝补补" />
+    <option name="LAST_COMMIT_MESSAGE" value="缝缝补补" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="496" y="91" key="#Test:_" timestamp="1576754726049">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="496" y="91" key="#Test:_/0.0.1536.834@0.0.1536.834" timestamp="1576754726049" />
+    <state x="361" y="78" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1576720536657">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="361" y="78" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.834@0.0.1536.834" timestamp="1576720536657" />
+    <state x="415" y="19" key="CommitChangelistDialog2" timestamp="1576762218808">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="415" y="19" key="CommitChangelistDialog2/0.0.1536.834@0.0.1536.834" timestamp="1576762218808" />
+    <state x="549" y="147" key="FileChooserDialogImpl" timestamp="1576753950740">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="549" y="147" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1576753950740" />
+    <state width="1497" height="175" key="GridCell.Tab.0.bottom" timestamp="1576762038448">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1497" height="175" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1576762038448" />
+    <state width="1497" height="175" key="GridCell.Tab.0.center" timestamp="1576762038448">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1497" height="175" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1576762038448" />
+    <state width="1497" height="175" key="GridCell.Tab.0.left" timestamp="1576762038448">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1497" height="175" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1576762038448" />
+    <state width="1497" height="175" key="GridCell.Tab.0.right" timestamp="1576762038448">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1497" height="175" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1576762038448" />
+    <state x="361" y="153" key="Vcs.Push.Dialog.v2" timestamp="1576724580150">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="361" y="153" key="Vcs.Push.Dialog.v2/0.0.1536.834@0.0.1536.834" timestamp="1576724580150" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/FamilyPropertyMS$Test__.coverage" NAME="Test:  Coverage Results" MODIFIED="1576754760888" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+  </component>
+</project>

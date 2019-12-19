@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'messageManage',
     'familyManage',
     'billsManage',
+    'borrowingMoneyManagement',
 ]
 
 MIDDLEWARE = [

@@ -144,7 +144,7 @@ class IncomeView(APIView, BIllBaseClass):
     def get(self, request, *args, **kwargs):
         income_bill = UserBills.objects.filter(user=request.user, type=0)
         bills = BillsSerializer(instance=income_bill, many=True)
-        return JsonResponse(bills.data, safe=False)
+        return JsonResponse(response_detail(200, data=bills.data), safe=False)
 
     def post(self, request, *args, **kwargs):
         return self._post(request)
@@ -156,3 +156,10 @@ class IncomeView(APIView, BIllBaseClass):
 class StatisticsView(APIView, BIllBaseClass):
     def get(self, request, *args, **kwargs):
         return JsonResponse(response_detail(200, data=self.statistical_billing_data(request)))
+
+
+class BankSavingsView(APIView):
+    pass
+
+
+

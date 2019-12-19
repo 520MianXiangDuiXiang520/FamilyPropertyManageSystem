@@ -21,7 +21,6 @@ class MyAuthentication(BaseAuthentication):
                 self._delete_token(token_field)
                 raise APIException("认证失败(token timeout)")
             user = models.User.objects.filter(id=token_field.user_id).first()
-            print(datetime.datetime.now(tz=pytz.timezone('UTC')))
             token_field.create_time = datetime.datetime.now(tz=pytz.timezone('UTC'))
             token_field.save()
         return user, token_field
