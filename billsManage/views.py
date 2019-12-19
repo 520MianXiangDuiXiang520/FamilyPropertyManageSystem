@@ -59,8 +59,7 @@ class BIllBaseClass:
     def get(self, request, *args, **kwargs):
         pass
 
-    @staticmethod
-    def _post(request):
+    def _post(self, request):
         print(request.data)
         try:
             bills_type = int(request.POST.get('bill_type'))
@@ -98,9 +97,8 @@ class BIllBaseClass:
             if int(request.POST.get('is_add_to_family')) == 1:
                 new_family_bill = FamilyBills(family_id=request.user.family1, bills_id=new_field)
                 new_family_bill.save()
-        income_bill = UserBills.objects.filter(user=request.user, type=bills_type)
-        bills = BillsSerializer(instance=income_bill, many=True)
-        result = response_detail(200, data=bills.data)
+        data = self.statistical_billing_data(request)
+        result = response_detail(200, data=data)
         return JsonResponse(result)
 
     def _put(self, request, bill_type: int):
