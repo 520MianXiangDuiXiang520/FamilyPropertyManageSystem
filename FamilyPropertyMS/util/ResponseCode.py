@@ -1,5 +1,6 @@
 CODE = {
     200: {'code': 200, 'msg': "ok"},
+    201: {'code': 201, 'msg': "no data"},
     400: {'code': 400, 'msg': "Bad Request"},  # 请求错误
     401: {'code': 401, 'msg': "Unauthorized"},  # 没有用户凭证
     403: {'code': 403, 'msg': 'Forbidden'},  # 拒绝授权

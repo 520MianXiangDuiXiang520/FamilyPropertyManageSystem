@@ -9,8 +9,10 @@
 /billsManage/migrations
 /messageManage/migrations
 /userManage/migrations
+/borrowingMoneyManagement/migrations
 
 # 编辑器留下的文件
 .idea/
 
+# 敏感信息
 /FamilyPropertyMS/util/OAuth.py

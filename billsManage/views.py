@@ -24,30 +24,33 @@ class BIllBaseClass:
         income_money = []
         expend_projects = []
         expend_money = []
+        all_income = 0
+        all_expend = 0
         income_bills = UserBills.objects.filter(user=request.user, type=0)
         expend_bills = UserBills.objects.filter(user=request.user, type=10)
-        all_income = income_bills.aggregate(Sum("money"))
-        all_expend = expend_bills.aggregate(Sum('money'))
-        staticmethod_income = income_bills.values('concrete_type').\
-            annotate(Sum('money')).values('concrete_type', 'money__sum')
-        staticmethod_expend = expend_bills.values('concrete_type').\
-            annotate(Sum('money')).values('concrete_type', 'money__sum')
-
-        for i in staticmethod_income:
-            income_projects.append(i['concrete_type'])
-            income_money.append(i['money__sum'])
-        for i in staticmethod_expend:
-            expend_projects.append(i['concrete_type'])
-            expend_money.append(i['money__sum'])
-        overage = all_income['money__sum'] - all_expend['money__sum']
-        statistical_data.update({'all_income': all_income['money__sum']})
-        statistical_data.update({'all_expend': all_expend['money__sum']})
+        assert income_bills or expend_bills
+        if income_bills:
+            all_income = income_bills.aggregate(Sum("money"))['money__sum']
+            statistical_data.update({'all_income': all_income})
+            staticmethod_income = income_bills.values('concrete_type'). \
+                annotate(Sum('money')).values('concrete_type', 'money__sum')
+            for i in staticmethod_income:
+                income_projects.append(i['concrete_type'])
+                income_money.append(i['money__sum'])
+            statistical_data.update({'income_projects': income_projects})
+            statistical_data.update({'income_money': income_money})
+        if expend_bills:
+            all_expend = expend_bills.aggregate(Sum('money'))['money__sum']
+            statistical_data.update({'all_expend': all_expend})
+            staticmethod_expend = expend_bills.values('concrete_type'). \
+                annotate(Sum('money')).values('concrete_type', 'money__sum')
+            for i in staticmethod_expend:
+                expend_projects.append(i['concrete_type'])
+                expend_money.append(i['money__sum'])
+            statistical_data.update({'expend_projects': expend_projects})
+            statistical_data.update({'expend_money': expend_money})
+        overage = all_income - all_expend
         statistical_data.update({'overage': overage})
-        statistical_data.update({'income_projects': income_projects})
-        statistical_data.update({'income_money': income_money})
-        statistical_data.update({'expend_projects': expend_projects})
-        statistical_data.update({'expend_money': expend_money})
-        print(statistical_data)
         return statistical_data
 
     def _get_info(self, request, bill_type: int):
@@ -155,7 +158,11 @@ class IncomeView(APIView, BIllBaseClass):
 
 class StatisticsView(APIView, BIllBaseClass):
     def get(self, request, *args, **kwargs):
-        return JsonResponse(response_detail(200, data=self.statistical_billing_data(request)))
+        try:
+            data = self.statistical_billing_data(request)
+        except AssertionError:
+            return JsonResponse(response_detail(201))
+        return JsonResponse(response_detail(200, data=data))
 
 
 class BankSavingsView(APIView):
