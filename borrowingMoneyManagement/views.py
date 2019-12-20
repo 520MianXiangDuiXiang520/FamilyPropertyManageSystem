@@ -11,24 +11,9 @@ class BorrowingMoneyManagementView(APIView):
 
     @staticmethod
     def _verify_post_request_data__valid(request):
-        need_fields = ('who', 'money', 'pay_back_date')
-        for field in need_fields:
-            if not request.POST.get(field):
-                return JsonResponse(response_detail(400, f"{field}缺失"))
-        who = int(request.POST.get('who'))
-        money = int(request.POST.get('money'))
-        pay_back_date = str(request.POST.get('pay_back_date'))
-        try:
-            who = User.objects.get(id=who)
-        except:
-            return JsonResponse(response_detail(400, "请求失败！用户不存在！"))
-        if money < 0:
-            return JsonResponse(response_detail(400, "请求失败！金额应该大于0"))
-        try:
-            field_time = datetime.strptime(pay_back_date, '%Y-%m-%d')
-        except ValueError:
-            return JsonResponse(response_detail(400, '时间格式有误，应为 %Y-%m-%d'))
+        print("l"*100)
 
+        print("k"*100)
         return {'who': who, 'money': money, 'time': field_time}
 
     @staticmethod
@@ -53,25 +38,42 @@ class BorrowingMoneyManagementView(APIView):
         """
         发起借钱请求, 需要三个字段（向谁借who, 借多少money，什么时候还pay_back_date）
         """
-        data = self._verify_post_request_data__valid(request)
-        send_message(request.user, data['who'], "借钱信息", f"{data['who'].username} 想向你借 {data['money']}"
-                                                        f"块钱，还款时间是: {data['time']}, 是否同意？", 2)
+        need_fields = ('who', 'money', 'pay_back_date')
+        for field in need_fields:
+            if not request.POST.get(field):
+                return JsonResponse(response_detail(400, f"{field}缺失"))
+        who = int(request.POST.get('who'))
+        money = int(request.POST.get('money'))
+        pay_back_date = str(request.POST.get('pay_back_date'))
+        print(who)
+        try:
+            who = User.objects.get(id=who)
+        except:
+            return JsonResponse(response_detail(400, "请求失败！用户不存在！"))
+        if money < 0:
+            return JsonResponse(response_detail(400, "请求失败！金额应该大于0"))
+        try:
+            field_time = datetime.strptime(pay_back_date, '%Y-%m-%d')
+        except ValueError:
+            return JsonResponse(response_detail(400, '时间格式有误，应为 %Y-%m-%d'))
+        send_message(request.user, who, "借钱信息", f"{request.user.username} 想向你借 {money}"
+                                                        f"块钱，还款时间是: {field_time}, 是否同意？", 2)
         borrow_field = BorrowMoneyTable(borrower=request.user,
-                                        lender=data['who'],
-                                        money=data['money'],
-                                        repayment_date=data['time'],
+                                        lender=who,
+                                        money=money,
+                                        repayment_date=field_time,
                                         status=0)
         borrow_field.save()
         return JsonResponse(response_detail(200))
 
     def put(self, request):
         """
-        处理借钱请求，需要两个字段（是否同意【is_agree】 0代表不同意， 1代表同意, 借钱记录号【id】）
+        处理借钱请求，需要两个字段（是否同意【is_agree】 1代表不同意， 0代表同意, 借钱记录号【id】）
         """
         data = self._verify_put_request_data_valid(request)
         is_agree = data['is_agree']
         borrow_field = data['borrow_field']
-        if is_agree == 0:
+        if is_agree == 1:
             send_message(request.user, borrow_field.borrower, "借款申请结果",
                          f"{request.user.username} 不同意您的借款申请", 1)
             borrow_field.delete()

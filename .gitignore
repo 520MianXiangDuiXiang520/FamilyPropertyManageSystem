@@ -12,3 +12,5 @@
 
 # 编辑器留下的文件
 .idea/
+
+/FamilyPropertyMS/util/OAuth.py

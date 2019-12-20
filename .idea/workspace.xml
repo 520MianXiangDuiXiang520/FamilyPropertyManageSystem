@@ -1,38 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="da3f3696-3530-4d26-aff3-00c96f153683" name="Default Changelist" comment="缝缝补补">
-      <change afterPath="$PROJECT_DIR$/.idea/FamilyPropertyMS.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/datalore.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/billsManage/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/billsManage/migrations/0002_auto_20191213_2140.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/billsManage/migrations/0003_auto_20191214_1328.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/billsManage/migrations/0004_auto_20191214_1331.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/billsManage/migrations/0005_userbills_concrete_type.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/billsManage/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/borrowingMoneyManagement/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/borrowingMoneyManagement/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/borrowingMoneyManagement/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/borrowingMoneyManagement/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/borrowingMoneyManagement/migrations/0002_auto_20191219_2040.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/borrowingMoneyManagement/migrations/0003_auto_20191219_2127.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/borrowingMoneyManagement/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/borrowingMoneyManagement/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/borrowingMoneyManagement/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/borrowingMoneyManagement/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/borrowingMoneyManagement/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/familyManage/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/familyManage/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/messageManage/migrations/0003_auto_20191124_1638.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FamilyPropertyMS/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/FamilyPropertyMS/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FamilyPropertyMS/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/FamilyPropertyMS/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FamilyPropertyMS/util/MyAuthentication.py" beforeDir="false" afterPath="$PROJECT_DIR$/FamilyPropertyMS/util/MyAuthentication.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/billsManage/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/billsManage/views.py" afterDir="false" />
+    <list default="true" id="da3f3696-3530-4d26-aff3-00c96f153683" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/borrowingMoneyManagement/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/borrowingMoneyManagement/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/userManage/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/userManage/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/userManage/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/userManage/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/userManage/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/userManage/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +86,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -204,7 +180,7 @@
       <workItem from="1576501354878" duration="2844000" />
       <workItem from="1576656249259" duration="3586000" />
       <workItem from="1576676758064" duration="1264000" />
-      <workItem from="1576720514269" duration="11530000" />
+      <workItem from="1576720514269" duration="21180000" />
     </task>
     <task id="LOCAL-00001" summary="（BUG）状态码拷贝后修改">
       <created>1574576010352</created>
@@ -353,7 +329,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576724285201</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="实现借还钱管理接口">
+      <created>1576762326181</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1576762326181</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -396,7 +379,8 @@
     <MESSAGE value="账单统计" />
     <MESSAGE value="修改账单" />
     <MESSAGE value="缝缝补补" />
-    <option name="LAST_COMMIT_MESSAGE" value="缝缝补补" />
+    <MESSAGE value="实现借还钱管理接口" />
+    <option name="LAST_COMMIT_MESSAGE" value="实现借还钱管理接口" />
   </component>
   <component name="WindowStateProjectService">
     <state x="496" y="91" key="#Test:_" timestamp="1576754726049">
@@ -407,34 +391,38 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="361" y="78" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.834@0.0.1536.834" timestamp="1576720536657" />
-    <state x="415" y="19" key="CommitChangelistDialog2" timestamp="1576762218808">
+    <state x="415" y="19" key="CommitChangelistDialog2" timestamp="1576762321865">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="415" y="19" key="CommitChangelistDialog2/0.0.1536.834@0.0.1536.834" timestamp="1576762218808" />
+    <state x="415" y="19" key="CommitChangelistDialog2/0.0.1536.834@0.0.1536.834" timestamp="1576762321865" />
     <state x="549" y="147" key="FileChooserDialogImpl" timestamp="1576753950740">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="549" y="147" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1576753950740" />
-    <state width="1497" height="175" key="GridCell.Tab.0.bottom" timestamp="1576762038448">
+    <state width="1497" height="175" key="GridCell.Tab.0.bottom" timestamp="1576824855822">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1497" height="175" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1576762038448" />
-    <state width="1497" height="175" key="GridCell.Tab.0.center" timestamp="1576762038448">
+    <state width="1497" height="175" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1576824855822" />
+    <state width="1497" height="175" key="GridCell.Tab.0.center" timestamp="1576824855822">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1497" height="175" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1576762038448" />
-    <state width="1497" height="175" key="GridCell.Tab.0.left" timestamp="1576762038448">
+    <state width="1497" height="175" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1576824855822" />
+    <state width="1497" height="175" key="GridCell.Tab.0.left" timestamp="1576824855822">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1497" height="175" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1576762038448" />
-    <state width="1497" height="175" key="GridCell.Tab.0.right" timestamp="1576762038448">
+    <state width="1497" height="175" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1576824855822" />
+    <state width="1497" height="175" key="GridCell.Tab.0.right" timestamp="1576824855822">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1497" height="175" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1576762038448" />
-    <state x="361" y="153" key="Vcs.Push.Dialog.v2" timestamp="1576724580150">
+    <state width="1497" height="175" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1576824855822" />
+    <state x="277" y="63" key="SettingsEditor" timestamp="1576824938378">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="361" y="153" key="Vcs.Push.Dialog.v2/0.0.1536.834@0.0.1536.834" timestamp="1576724580150" />
+    <state x="277" y="63" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1576824938378" />
+    <state x="361" y="153" key="Vcs.Push.Dialog.v2" timestamp="1576763369060">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="361" y="153" key="Vcs.Push.Dialog.v2/0.0.1536.834@0.0.1536.834" timestamp="1576763369060" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/FamilyPropertyMS$Test__.coverage" NAME="Test:  Coverage Results" MODIFIED="1576754760888" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />

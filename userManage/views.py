@@ -2,14 +2,53 @@ from django.shortcuts import HttpResponse
 from django.http import JsonResponse, QueryDict
 from rest_framework.views import APIView
 import uuid
+from FamilyPropertyMS.util import OAuth
 from .models import User, UserToken
 from FamilyPropertyMS.util.Tool import timeout_judgment, send_message, response_detail
 from familyManage.models import Family, Application
+import requests
+import re
 
 
 # Create your views here.
 # TODO: 密码需要加密（使用Django原生的加密框架把）
 # TODO： 修改密码要作为另一个单独的视图，因为需要确认两遍密码，还要输入原密码
+
+class OAuthByGitHub(APIView):
+    """
+    GitHub第三方登录
+    """
+    authentication_classes = []
+
+    def get(self, request):
+        code = request.GET.get('code')
+        if not code:
+            return JsonResponse(response_detail(400))
+        data = {'client_id': OAuth.OAuthByGitHubSetting['client_id'],
+                'client_secret': OAuth.OAuthByGitHubSetting['client_secret'],
+                'code': code}
+        request = requests.post('https://github.com/login/oauth/access_token', data=data).text
+        pattern = re.compile(r'^access_token=+[0-9a-zA-Z]+&.+$')
+        if not re.match(pattern, request):
+            return JsonResponse(response_detail(400, "登录失败！"))
+        try:
+            token = (request.split("=")[1]).split("&")[0]
+        except IndexError:
+            return JsonResponse(response_detail(400, "登录失败！"))
+        get_user_info = requests.get(f'https://api.github.com/user?access_token={token}').json()
+        try:
+            username = get_user_info['login']
+        except NameError:
+            return JsonResponse(response_detail(400, "登录失败！"))
+        user = User.objects.filter(username=username).first()
+        if not user:
+            newOAuthUser = User(username=username, password='password')
+            newOAuthUser.save()
+            user = newOAuthUser
+        u4 = uuid.uuid4()  # 生成uuid4
+        UserToken.objects.update_or_create(user=user, defaults={'token': u4})
+        return JsonResponse(response_detail(200, data={'token': u4}))
+
 
 class LoginView(APIView):
     authentication_classes = []

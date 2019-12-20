@@ -7,7 +7,7 @@ from familyManage.models import Family
 class User(models.Model):
     SEX = [(1, '男'), (2, '女')]
     id = models.BigAutoField(primary_key=True, db_column="用户ID")
-    username = models.CharField(max_length=10, blank=False, db_column="用户名")
+    username = models.CharField(max_length=50, blank=False, db_column="用户名")
     password = models.CharField(max_length=64, blank=False, db_column="密码")
     telephone = models.CharField(max_length=11, blank=True, db_column="电话")
     email = models.EmailField(max_length=40, blank=True, db_column="邮箱")
