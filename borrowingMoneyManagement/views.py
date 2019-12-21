@@ -2,12 +2,13 @@ from datetime import datetime
 from django.http import JsonResponse, QueryDict
 from rest_framework.views import APIView
 from FamilyPropertyMS.util.Tool import response_detail, send_message
+from .MySerializers import BorrowSerializer
 from .models import BorrowMoneyTable
 from userManage.models import User
 from billsManage.models import UserBills
 
 
-class BorrowingMoneyManagementView(APIView):
+class BorrowingView(APIView):
 
     def post(self, request, *args, **kwargs):
         """
@@ -28,7 +29,6 @@ class BorrowingMoneyManagementView(APIView):
             return JsonResponse(response_detail(400, "请求失败！金额应该大于0"))
         try:
             field_time = datetime.strptime(pay_back_date, '%Y-%m-%d')
-            print(field_time)
         except ValueError:
             return JsonResponse(response_detail(400, '时间格式有误，应为 %Y-%m-%d'))
 
@@ -83,4 +83,57 @@ class BorrowingMoneyManagementView(APIView):
         bill_borrower.save()
         borrow_field.status = 1
         borrow_field.save()
+        return JsonResponse(response_detail(200))
+
+
+class PayBackView(APIView):
+    """
+    还钱（给谁还，还多少）
+    """
+
+    def get(self, request, *args, **kwargs):
+        """
+        返回用户所有借的帐
+        """
+        borrow_bills = BorrowMoneyTable.objects.filter(borrower=request.user)
+        if not borrow_bills:
+            return JsonResponse(response_detail(201))
+        borrow_data = BorrowSerializer(instance=borrow_bills, many=True)
+        return JsonResponse(response_detail(200, data=borrow_data.data), safe=False)
+
+    def post(self, request, *args, **kwargs):
+        need_fields = ('who', 'money', 'bill_id')
+        for field in need_fields:
+            if not request.POST.get(field):
+                return JsonResponse(response_detail(400, f"{field} 缺失！"))
+        who_id = int(request.POST.get('who'))
+        money = int(request.POST.get('money'))
+        bill_id = int(request.POST.get('bill_id'))
+        who = User.objects.filter(id=who_id).first()
+        if not who:
+            return JsonResponse(response_detail(400, "用户不存在！"))
+        if money <= 0:
+            return JsonResponse(response_detail(400, "还款金额不能小于等于0"))
+        # 校验通过后，首先删除或修改借还款数据表中的内容，添加双方账单，再给用户发消息
+        borrow_bill = BorrowMoneyTable.objects.filter(borrower=request.user,
+                                                      lender=who, id=bill_id).order_by('-money').first()
+        if not borrow_bill:
+            return JsonResponse(response_detail(400, "借款记录不存在"))
+        if borrow_bill.money < money:
+            return JsonResponse(response_detail(400, "金额超过欠账金额！"))
+        # TODO：一次性还清所有帐
+        borrow_bill.money -= money
+        if borrow_bill.money == 0:
+            borrow_bill.delete()
+        else:
+            borrow_bill.save()
+        bill_borrower = UserBills(user=request.user, money=money,
+                                  type=10, concrete_type="还款",
+                                  remarks=f"给{who.username} 还款！")
+        bill_borrower.save()
+        bill_lender = UserBills(user=who, money=money,
+                                type=0, concrete_type="借款收回",
+                                remarks=f"来自{request.user}的还款")
+        bill_lender.save()
+        send_message(request.user, who, "还钱啦", f"欠你的钱给你还了啊！金额：{money}元", 0)
         return JsonResponse(response_detail(200))
