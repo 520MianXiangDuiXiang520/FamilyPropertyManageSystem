@@ -13,6 +13,7 @@
 
 # 编辑器留下的文件
 .idea/
+__pycache__/
 
 # 敏感信息
 /FamilyPropertyMS/util/OAuth.py
