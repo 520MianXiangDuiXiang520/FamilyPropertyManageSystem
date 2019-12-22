@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="da3f3696-3530-4d26-aff3-00c96f153683" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/borrowingMoneyManagement/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/borrowingMoneyManagement/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/borrowingMoneyManagement/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/borrowingMoneyManagement/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,7 +175,8 @@
       <workItem from="1576501354878" duration="2844000" />
       <workItem from="1576656249259" duration="3586000" />
       <workItem from="1576676758064" duration="1264000" />
-      <workItem from="1576720514269" duration="39770000" />
+      <workItem from="1576720514269" duration="39949000" />
+      <workItem from="1576940850243" duration="6226000" />
     </task>
     <task id="LOCAL-00001" summary="（BUG）状态码拷贝后修改">
       <created>1574576010352</created>
@@ -347,7 +346,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576852518543</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="ok">
+      <created>1576938737227</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1576938737227</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -393,7 +399,8 @@
     <MESSAGE value="实现借还钱管理接口" />
     <MESSAGE value="add OAuth By GitHub Method" />
     <MESSAGE value="修修补补" />
-    <option name="LAST_COMMIT_MESSAGE" value="修修补补" />
+    <MESSAGE value="ok" />
+    <option name="LAST_COMMIT_MESSAGE" value="ok" />
   </component>
   <component name="WindowStateProjectService">
     <state x="496" y="91" key="#Test:_" timestamp="1576754726049">
@@ -404,38 +411,38 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="361" y="78" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.834@0.0.1536.834" timestamp="1576720536657" />
-    <state x="415" y="19" key="CommitChangelistDialog2" timestamp="1576852514714">
+    <state x="415" y="19" key="CommitChangelistDialog2" timestamp="1576989654357">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="415" y="19" key="CommitChangelistDialog2/0.0.1536.834@0.0.1536.834" timestamp="1576852514714" />
+    <state x="415" y="19" key="CommitChangelistDialog2/0.0.1536.834@0.0.1536.834" timestamp="1576989654357" />
     <state x="549" y="147" key="FileChooserDialogImpl" timestamp="1576938481432">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="549" y="147" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1576938481432" />
-    <state width="1497" height="175" key="GridCell.Tab.0.bottom" timestamp="1576931196143">
+    <state width="1497" height="53" key="GridCell.Tab.0.bottom" timestamp="1576938745902">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1497" height="175" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1576931196143" />
-    <state width="1497" height="175" key="GridCell.Tab.0.center" timestamp="1576931196143">
+    <state width="1497" height="53" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1576938745902" />
+    <state width="1497" height="53" key="GridCell.Tab.0.center" timestamp="1576938745902">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1497" height="175" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1576931196143" />
-    <state width="1497" height="175" key="GridCell.Tab.0.left" timestamp="1576931196143">
+    <state width="1497" height="53" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1576938745902" />
+    <state width="1497" height="53" key="GridCell.Tab.0.left" timestamp="1576938745902">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1497" height="175" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1576931196143" />
-    <state width="1497" height="175" key="GridCell.Tab.0.right" timestamp="1576931196143">
+    <state width="1497" height="53" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1576938745902" />
+    <state width="1497" height="53" key="GridCell.Tab.0.right" timestamp="1576938745902">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1497" height="175" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1576931196143" />
+    <state width="1497" height="53" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1576938745902" />
     <state x="277" y="63" key="SettingsEditor" timestamp="1576824938378">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="277" y="63" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1576824938378" />
-    <state x="361" y="153" key="Vcs.Push.Dialog.v2" timestamp="1576852526268">
+    <state x="361" y="153" key="Vcs.Push.Dialog.v2" timestamp="1576989630884">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="361" y="153" key="Vcs.Push.Dialog.v2/0.0.1536.834@0.0.1536.834" timestamp="1576852526268" />
+    <state x="361" y="153" key="Vcs.Push.Dialog.v2/0.0.1536.834@0.0.1536.834" timestamp="1576989630884" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/FamilyPropertyMS$Test__.coverage" NAME="Test:  Coverage Results" MODIFIED="1576754760888" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
