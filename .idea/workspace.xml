@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="da3f3696-3530-4d26-aff3-00c96f153683" name="Default Changelist" comment="ok">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="da3f3696-3530-4d26-aff3-00c96f153683" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,6 +178,7 @@
       <workItem from="1576720514269" duration="39949000" />
       <workItem from="1576940850243" duration="8425000" />
       <workItem from="1577260321687" duration="22000" />
+      <workItem from="1577605937244" duration="248000" />
     </task>
     <task id="LOCAL-00001" summary="（BUG）状态码拷贝后修改">
       <created>1574576010352</created>
@@ -354,7 +355,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576938737227</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="update host">
+      <created>1577606155564</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1577606155564</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -401,7 +409,8 @@
     <MESSAGE value="add OAuth By GitHub Method" />
     <MESSAGE value="修修补补" />
     <MESSAGE value="ok" />
-    <option name="LAST_COMMIT_MESSAGE" value="ok" />
+    <MESSAGE value="update host" />
+    <option name="LAST_COMMIT_MESSAGE" value="update host" />
   </component>
   <component name="WindowStateProjectService">
     <state x="496" y="91" key="#Test:_" timestamp="1576754726049">
@@ -412,10 +421,10 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="361" y="78" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.834@0.0.1536.834" timestamp="1576720536657" />
-    <state x="415" y="19" key="CommitChangelistDialog2" timestamp="1576989654357">
+    <state x="415" y="19" key="CommitChangelistDialog2" timestamp="1577606152758">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="415" y="19" key="CommitChangelistDialog2/0.0.1536.834@0.0.1536.834" timestamp="1576989654357" />
+    <state x="415" y="19" key="CommitChangelistDialog2/0.0.1536.834@0.0.1536.834" timestamp="1577606152758" />
     <state x="549" y="147" key="FileChooserDialogImpl" timestamp="1576938481432">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
