@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="da3f3696-3530-4d26-aff3-00c96f153683" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FamilyPropertyMS/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/FamilyPropertyMS/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/userManage/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/userManage/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/userManage/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/userManage/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,7 +178,7 @@
       <workItem from="1576720514269" duration="39949000" />
       <workItem from="1576940850243" duration="8425000" />
       <workItem from="1577260321687" duration="22000" />
-      <workItem from="1577605937244" duration="2649000" />
+      <workItem from="1577605937244" duration="3299000" />
     </task>
     <task id="LOCAL-00001" summary="（BUG）状态码拷贝后修改">
       <created>1574576010352</created>
@@ -372,7 +369,21 @@
       <option name="project" value="LOCAL" />
       <updated>1577606206137</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="为了部署1">
+      <created>1577683844700</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1577683844700</updated>
+    </task>
+    <task id="LOCAL-00029" summary="为了部署2">
+      <created>1577684008944</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1577684008944</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -395,8 +406,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="更新查看家庭信息的接口文档" />
-    <MESSAGE value="添加新账单管理app（billsManage）" />
     <MESSAGE value="用户申请加入家庭时，添加了一天只能申请一次的限制" />
     <MESSAGE value="增加了一个工具函数，用来判断数据库中某个字段有没有超时" />
     <MESSAGE value="修改家长审核用户加入家庭接口中不合理的地方" />
@@ -420,7 +429,9 @@
     <MESSAGE value="ok" />
     <MESSAGE value="update host" />
     <MESSAGE value="update gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="update gitignore" />
+    <MESSAGE value="为了部署1" />
+    <MESSAGE value="为了部署2" />
+    <option name="LAST_COMMIT_MESSAGE" value="为了部署2" />
   </component>
   <component name="WindowStateProjectService">
     <state x="496" y="91" key="#Test:_" timestamp="1576754726049">
@@ -431,10 +442,14 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="361" y="78" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.834@0.0.1536.834" timestamp="1576720536657" />
-    <state x="415" y="19" key="CommitChangelistDialog2" timestamp="1577683842775">
+    <state x="415" y="19" key="CommitChangelistDialog2" timestamp="1577684007530">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="415" y="19" key="CommitChangelistDialog2/0.0.1536.834@0.0.1536.834" timestamp="1577683842775" />
+    <state x="415" y="19" key="CommitChangelistDialog2/0.0.1536.834@0.0.1536.834" timestamp="1577684007530" />
+    <state x="93" y="93" width="1350" height="648" key="DiffContextDialog" timestamp="1577684464388">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="93" y="93" width="1350" height="648" key="DiffContextDialog/0.0.1536.834@0.0.1536.834" timestamp="1577684464388" />
     <state x="549" y="147" key="FileChooserDialogImpl" timestamp="1576938481432">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
@@ -459,10 +474,14 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="277" y="63" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1576824938378" />
-    <state x="361" y="153" key="Vcs.Push.Dialog.v2" timestamp="1577683850421">
+    <state x="361" y="153" key="Vcs.Push.Dialog.v2" timestamp="1577684015274">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="361" y="153" key="Vcs.Push.Dialog.v2/0.0.1536.834@0.0.1536.834" timestamp="1577683850421" />
+    <state x="361" y="153" key="Vcs.Push.Dialog.v2/0.0.1536.834@0.0.1536.834" timestamp="1577684015274" />
+    <state x="390" y="212" key="git4idea.merge.GitPullDialog" timestamp="1577684443407">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="390" y="212" key="git4idea.merge.GitPullDialog/0.0.1536.834@0.0.1536.834" timestamp="1577684443407" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/FamilyPropertyMS$Test__.coverage" NAME="Test:  Coverage Results" MODIFIED="1576754760888" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />

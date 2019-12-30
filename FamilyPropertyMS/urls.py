@@ -24,8 +24,8 @@ from borrowingMoneyManagement import urls as borrow_url
 
 urlpatterns = [
     path('api/v1/user_manage/', include(user_manage_urls)),
-    path('api/v1/message/', include(message_url)),
-    path('api/v1/family/', include(family_manage_url)),
-    path('api/v1/bill/', include(bill_manage_url)),
-    path('api/v1/borrow_money/', include(borrow_url))
+    # path('api/v1/message/', include(message_url)),
+    # path('api/v1/family/', include(family_manage_url)),
+    # path('api/v1/bill/', include(bill_manage_url)),
+    # path('api/v1/borrow_money/', include(borrow_url))
 ]
