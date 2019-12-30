@@ -6,7 +6,7 @@ from FamilyPropertyMS.util import OAuth
 from .models import User, UserToken
 # from FamilyPropertyMS.util.Tool import timeout_judgment, send_message, response_detail
 from FamilyPropertyMS.util.Tool import response_detail
-from familyManage.models import Family, Application
+# from familyManage.models import Family, Application
 import requests
 import re
 
