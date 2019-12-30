@@ -17,10 +17,10 @@ from django.urls import path, include
 from django.views.generic import TemplateView
 
 from userManage import urls as user_manage_urls
-from messageManage import urls as message_url
-from familyManage import urls as family_manage_url
-from billsManage import urls as bill_manage_url
-from borrowingMoneyManagement import urls as borrow_url
+# from messageManage import urls as message_url
+# from familyManage import urls as family_manage_url
+# from billsManage import urls as bill_manage_url
+# from borrowingMoneyManagement import urls as borrow_url
 
 urlpatterns = [
     path('api/v1/user_manage/', include(user_manage_urls)),
