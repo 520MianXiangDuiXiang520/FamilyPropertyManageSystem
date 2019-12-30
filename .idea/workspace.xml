@@ -3,6 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="da3f3696-3530-4d26-aff3-00c96f153683" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FamilyPropertyMS/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/FamilyPropertyMS/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FamilyPropertyMS/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/FamilyPropertyMS/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/userManage/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/userManage/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/userManage/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/userManage/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,7 +182,7 @@
       <workItem from="1576720514269" duration="39949000" />
       <workItem from="1576940850243" duration="8425000" />
       <workItem from="1577260321687" duration="22000" />
-      <workItem from="1577605937244" duration="3299000" />
+      <workItem from="1577605937244" duration="3831000" />
     </task>
     <task id="LOCAL-00001" summary="（BUG）状态码拷贝后修改">
       <created>1574576010352</created>
@@ -383,7 +387,28 @@
       <option name="project" value="LOCAL" />
       <updated>1577684008944</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="为了部署3">
+      <created>1577684541850</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1577684541850</updated>
+    </task>
+    <task id="LOCAL-00031" summary="为了部署4">
+      <created>1577684628867</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1577684628867</updated>
+    </task>
+    <task id="LOCAL-00032" summary="为了部署5">
+      <created>1577684712202</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1577684712202</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -406,9 +431,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="用户申请加入家庭时，添加了一天只能申请一次的限制" />
-    <MESSAGE value="增加了一个工具函数，用来判断数据库中某个字段有没有超时" />
-    <MESSAGE value="修改家长审核用户加入家庭接口中不合理的地方" />
     <MESSAGE value="定义权限管理类，设置家庭管理接口只对家长可见" />
     <MESSAGE value="增加一个用来发送消息工具函数，用它重写了冗余的代码" />
     <MESSAGE value="每次都copy(CODE[200])也太傻了吧" />
@@ -431,7 +453,10 @@
     <MESSAGE value="update gitignore" />
     <MESSAGE value="为了部署1" />
     <MESSAGE value="为了部署2" />
-    <option name="LAST_COMMIT_MESSAGE" value="为了部署2" />
+    <MESSAGE value="为了部署3" />
+    <MESSAGE value="为了部署4" />
+    <MESSAGE value="为了部署5" />
+    <option name="LAST_COMMIT_MESSAGE" value="为了部署5" />
   </component>
   <component name="WindowStateProjectService">
     <state x="496" y="91" key="#Test:_" timestamp="1576754726049">
@@ -442,10 +467,10 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="361" y="78" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.834@0.0.1536.834" timestamp="1576720536657" />
-    <state x="415" y="19" key="CommitChangelistDialog2" timestamp="1577684627537">
+    <state x="415" y="19" key="CommitChangelistDialog2" timestamp="1577684710853">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="415" y="19" key="CommitChangelistDialog2/0.0.1536.834@0.0.1536.834" timestamp="1577684627537" />
+    <state x="415" y="19" key="CommitChangelistDialog2/0.0.1536.834@0.0.1536.834" timestamp="1577684710853" />
     <state x="93" y="93" width="1350" height="648" key="DiffContextDialog" timestamp="1577684464388">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
@@ -474,10 +499,10 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="277" y="63" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1576824938378" />
-    <state x="361" y="153" key="Vcs.Push.Dialog.v2" timestamp="1577684699981">
+    <state x="361" y="153" key="Vcs.Push.Dialog.v2" timestamp="1577684715878">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="361" y="153" key="Vcs.Push.Dialog.v2/0.0.1536.834@0.0.1536.834" timestamp="1577684699981" />
+    <state x="361" y="153" key="Vcs.Push.Dialog.v2/0.0.1536.834@0.0.1536.834" timestamp="1577684715878" />
     <state x="390" y="212" key="git4idea.merge.GitPullDialog" timestamp="1577684443407">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
