@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="da3f3696-3530-4d26-aff3-00c96f153683" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FamilyPropertyMS/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/FamilyPropertyMS/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/userManage/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/userManage/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/userManage/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/userManage/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,7 +181,7 @@
       <workItem from="1576720514269" duration="39949000" />
       <workItem from="1576940850243" duration="8425000" />
       <workItem from="1577260321687" duration="22000" />
-      <workItem from="1577605937244" duration="248000" />
+      <workItem from="1577605937244" duration="2649000" />
     </task>
     <task id="LOCAL-00001" summary="（BUG）状态码拷贝后修改">
       <created>1574576010352</created>
@@ -362,7 +365,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577606155564</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="update gitignore">
+      <created>1577606206137</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1577606206137</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -385,7 +395,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="（BUG）状态码拷贝后修改" />
     <MESSAGE value="更新查看家庭信息的接口文档" />
     <MESSAGE value="添加新账单管理app（billsManage）" />
     <MESSAGE value="用户申请加入家庭时，添加了一天只能申请一次的限制" />
@@ -410,7 +419,8 @@
     <MESSAGE value="修修补补" />
     <MESSAGE value="ok" />
     <MESSAGE value="update host" />
-    <option name="LAST_COMMIT_MESSAGE" value="update host" />
+    <MESSAGE value="update gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="update gitignore" />
   </component>
   <component name="WindowStateProjectService">
     <state x="496" y="91" key="#Test:_" timestamp="1576754726049">
@@ -421,10 +431,10 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="361" y="78" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.834@0.0.1536.834" timestamp="1576720536657" />
-    <state x="415" y="19" key="CommitChangelistDialog2" timestamp="1577606152758">
+    <state x="415" y="19" key="CommitChangelistDialog2" timestamp="1577606204867">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="415" y="19" key="CommitChangelistDialog2/0.0.1536.834@0.0.1536.834" timestamp="1577606152758" />
+    <state x="415" y="19" key="CommitChangelistDialog2/0.0.1536.834@0.0.1536.834" timestamp="1577606204867" />
     <state x="549" y="147" key="FileChooserDialogImpl" timestamp="1576938481432">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
@@ -449,10 +459,10 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="277" y="63" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1576824938378" />
-    <state x="361" y="153" key="Vcs.Push.Dialog.v2" timestamp="1576989630884">
+    <state x="361" y="153" key="Vcs.Push.Dialog.v2" timestamp="1577606211023">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="361" y="153" key="Vcs.Push.Dialog.v2/0.0.1536.834@0.0.1536.834" timestamp="1576989630884" />
+    <state x="361" y="153" key="Vcs.Push.Dialog.v2/0.0.1536.834@0.0.1536.834" timestamp="1577606211023" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/FamilyPropertyMS$Test__.coverage" NAME="Test:  Coverage Results" MODIFIED="1576754760888" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />

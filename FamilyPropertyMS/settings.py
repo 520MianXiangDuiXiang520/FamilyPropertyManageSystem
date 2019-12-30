@@ -39,10 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'userManage',
-    'messageManage',
-    'familyManage',
-    'billsManage',
-    'borrowingMoneyManagement',
+    # 'messageManage',
+    # 'familyManage',
+    # 'billsManage',
+    # 'borrowingMoneyManagement',
 ]
 
 MIDDLEWARE = [
@@ -85,7 +85,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'family_property',
         'USER': 'root',
-        'PASSWORD': '1234567',
+        'PASSWORD': '****************',
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }
