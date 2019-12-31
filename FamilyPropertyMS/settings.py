@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'userManage',
     # 'messageManage',
-    # 'familyManage',
+    'familyManage',
     # 'billsManage',
     # 'borrowingMoneyManagement',
 ]
