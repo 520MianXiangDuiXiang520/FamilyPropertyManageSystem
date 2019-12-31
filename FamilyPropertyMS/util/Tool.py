@@ -3,7 +3,7 @@ from copy import copy
 import pytz
 from django.http import JsonResponse
 from FamilyPropertyMS.util.ResponseCode import CODE
-# from messageManage.models import Message
+from messageManage.models import Message
 from userManage.models import User
 
 

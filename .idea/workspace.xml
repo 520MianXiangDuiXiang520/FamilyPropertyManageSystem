@@ -4,9 +4,7 @@
     <list default="true" id="da3f3696-3530-4d26-aff3-00c96f153683" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FamilyPropertyMS/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/FamilyPropertyMS/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FamilyPropertyMS/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/FamilyPropertyMS/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/userManage/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/userManage/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/userManage/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/userManage/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FamilyPropertyMS/util/Tool.py" beforeDir="false" afterPath="$PROJECT_DIR$/FamilyPropertyMS/util/Tool.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,7 +180,8 @@
       <workItem from="1576720514269" duration="39949000" />
       <workItem from="1576940850243" duration="8425000" />
       <workItem from="1577260321687" duration="22000" />
-      <workItem from="1577605937244" duration="3831000" />
+      <workItem from="1577605937244" duration="5814000" />
+      <workItem from="1577779115961" duration="795000" />
     </task>
     <task id="LOCAL-00001" summary="（BUG）状态码拷贝后修改">
       <created>1574576010352</created>
@@ -408,7 +407,21 @@
       <option name="project" value="LOCAL" />
       <updated>1577684712202</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="为了部署6">
+      <created>1577685009502</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1577685009502</updated>
+    </task>
+    <task id="LOCAL-00034" summary="为了部署7">
+      <created>1577685210735</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1577685210735</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -431,8 +444,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="定义权限管理类，设置家庭管理接口只对家长可见" />
-    <MESSAGE value="增加一个用来发送消息工具函数，用它重写了冗余的代码" />
     <MESSAGE value="每次都copy(CODE[200])也太傻了吧" />
     <MESSAGE value="改BUG" />
     <MESSAGE value="升级Django到2.2.7" />
@@ -456,7 +467,9 @@
     <MESSAGE value="为了部署3" />
     <MESSAGE value="为了部署4" />
     <MESSAGE value="为了部署5" />
-    <option name="LAST_COMMIT_MESSAGE" value="为了部署5" />
+    <MESSAGE value="为了部署6" />
+    <MESSAGE value="为了部署7" />
+    <option name="LAST_COMMIT_MESSAGE" value="为了部署7" />
   </component>
   <component name="WindowStateProjectService">
     <state x="496" y="91" key="#Test:_" timestamp="1576754726049">
@@ -467,10 +480,10 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="361" y="78" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.834@0.0.1536.834" timestamp="1576720536657" />
-    <state x="415" y="19" key="CommitChangelistDialog2" timestamp="1577685008033">
+    <state x="415" y="19" key="CommitChangelistDialog2" timestamp="1577685209286">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="415" y="19" key="CommitChangelistDialog2/0.0.1536.834@0.0.1536.834" timestamp="1577685008033" />
+    <state x="415" y="19" key="CommitChangelistDialog2/0.0.1536.834@0.0.1536.834" timestamp="1577685209286" />
     <state x="93" y="93" width="1350" height="648" key="DiffContextDialog" timestamp="1577684464388">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
@@ -479,30 +492,30 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="549" y="147" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1576938481432" />
-    <state width="1497" height="165" key="GridCell.Tab.0.bottom" timestamp="1576995126986">
+    <state width="1497" height="165" key="GridCell.Tab.0.bottom" timestamp="1577800986624">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1497" height="165" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1576995126986" />
-    <state width="1497" height="165" key="GridCell.Tab.0.center" timestamp="1576995126986">
+    <state width="1497" height="165" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1577800986624" />
+    <state width="1497" height="165" key="GridCell.Tab.0.center" timestamp="1577800986623">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1497" height="165" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1576995126986" />
-    <state width="1497" height="165" key="GridCell.Tab.0.left" timestamp="1576995126986">
+    <state width="1497" height="165" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1577800986623" />
+    <state width="1497" height="165" key="GridCell.Tab.0.left" timestamp="1577800986623">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1497" height="165" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1576995126986" />
-    <state width="1497" height="165" key="GridCell.Tab.0.right" timestamp="1576995126986">
+    <state width="1497" height="165" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1577800986623" />
+    <state width="1497" height="165" key="GridCell.Tab.0.right" timestamp="1577800986624">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1497" height="165" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1576995126986" />
+    <state width="1497" height="165" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1577800986624" />
     <state x="277" y="63" key="SettingsEditor" timestamp="1576824938378">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="277" y="63" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1576824938378" />
-    <state x="361" y="153" key="Vcs.Push.Dialog.v2" timestamp="1577685013501">
+    <state x="361" y="153" key="Vcs.Push.Dialog.v2" timestamp="1577685215705">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="361" y="153" key="Vcs.Push.Dialog.v2/0.0.1536.834@0.0.1536.834" timestamp="1577685013501" />
+    <state x="361" y="153" key="Vcs.Push.Dialog.v2/0.0.1536.834@0.0.1536.834" timestamp="1577685215705" />
     <state x="390" y="212" key="git4idea.merge.GitPullDialog" timestamp="1577684443407">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
