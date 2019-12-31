@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="da3f3696-3530-4d26-aff3-00c96f153683" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FamilyPropertyMS/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/FamilyPropertyMS/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FamilyPropertyMS/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/FamilyPropertyMS/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FamilyPropertyMS/util/Tool.py" beforeDir="false" afterPath="$PROJECT_DIR$/FamilyPropertyMS/util/Tool.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/userManage/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/userManage/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -181,7 +184,7 @@
       <workItem from="1577260321687" duration="22000" />
       <workItem from="1577605937244" duration="5814000" />
       <workItem from="1577779115961" duration="795000" />
-      <workItem from="1577802321996" duration="985000" />
+      <workItem from="1577802321996" duration="1379000" />
     </task>
     <task id="LOCAL-00001" summary="（BUG）状态码拷贝后修改">
       <created>1574576010352</created>
@@ -435,7 +438,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577802805076</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="为了部署10">
+      <created>1577803506805</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1577803506805</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -458,7 +468,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="升级Django到2.2.7" />
     <MESSAGE value="对消息按时间排序" />
     <MESSAGE value="修改返回消息工具" />
     <MESSAGE value="独立家庭账单和账单数据表" />
@@ -483,7 +492,8 @@
     <MESSAGE value="为了部署7" />
     <MESSAGE value="为了部署8" />
     <MESSAGE value="为了部署9" />
-    <option name="LAST_COMMIT_MESSAGE" value="为了部署9" />
+    <MESSAGE value="为了部署10" />
+    <option name="LAST_COMMIT_MESSAGE" value="为了部署10" />
   </component>
   <component name="WindowStateProjectService">
     <state x="496" y="91" key="#Test:_" timestamp="1576754726049">
@@ -494,10 +504,10 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="361" y="78" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.834@0.0.1536.834" timestamp="1576720536657" />
-    <state x="415" y="19" key="CommitChangelistDialog2" timestamp="1577802802324">
+    <state x="415" y="19" key="CommitChangelistDialog2" timestamp="1577803505084">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="415" y="19" key="CommitChangelistDialog2/0.0.1536.834@0.0.1536.834" timestamp="1577802802324" />
+    <state x="415" y="19" key="CommitChangelistDialog2/0.0.1536.834@0.0.1536.834" timestamp="1577803505084" />
     <state x="93" y="93" width="1350" height="648" key="DiffContextDialog" timestamp="1577684464388">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
@@ -526,10 +536,10 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="277" y="63" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1576824938378" />
-    <state x="361" y="153" key="Vcs.Push.Dialog.v2" timestamp="1577802807452">
+    <state x="361" y="153" key="Vcs.Push.Dialog.v2" timestamp="1577803510874">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="361" y="153" key="Vcs.Push.Dialog.v2/0.0.1536.834@0.0.1536.834" timestamp="1577802807452" />
+    <state x="361" y="153" key="Vcs.Push.Dialog.v2/0.0.1536.834@0.0.1536.834" timestamp="1577803510874" />
     <state x="390" y="212" key="git4idea.merge.GitPullDialog" timestamp="1577684443407">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
