@@ -39,10 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'userManage',
-    'messageManage',
-    'familyManage',
-    'billsManage',
-    'borrowingMoneyManagement',
+    # 'messageManage',
+    # 'familyManage',
+    # 'billsManage',
+    # 'borrowingMoneyManagement',
 ]
 
 MIDDLEWARE = [
