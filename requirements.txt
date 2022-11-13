@@ -1,6 +1,6 @@
 ﻿requests
 Django==2.2.28
-djangorestframework==3.9.4
+djangorestframework==3.11.2
 PyMySQL==0.9.3
 pytz==2019.1
 sqlparse==0.3.0
